@@ -14,8 +14,8 @@ const AboutSection = () => {
   const y = useTransform(scrollYProgress, [0, 0.5], ["0%", "-50%"]);
 
   return (
-    <section ref={ref} className="bg-[#F7F7EC] py-16 px-6">
-      <div className="w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+    <section ref={ref} className=" py-16 px-6">
+      <div className="mx-w-8xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         
         {/* Left Content - Top initially, then smoothly center on scroll */}
         <motion.div

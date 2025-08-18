@@ -1,0 +1,206 @@
+import React, { useState, useRef, useEffect } from "react";
+
+const Services = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [activeService, setActiveService] = useState(null);
+  const [hoveredService, setHoveredService] = useState(null);
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect();
+        const x = ((e.clientX - rect.left - rect.width / 2) / rect.width) * 100;
+        const y = ((e.clientY - rect.top - rect.height / 2) / rect.height) * 100;
+        setMousePosition({ x, y });
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener("mousemove", handleMouseMove);
+      return () => container.removeEventListener("mousemove", handleMouseMove);
+    }
+  }, []);
+
+  const services = [
+    {
+      id: "01",
+      title: "Discovery & Visioning",
+      description:
+        "As part of our process, we begin by exploring exactly what your goals are, what your preferences are, and what makes your website unique. We lay the groundwork for the project by having conversations and workshops to establish a foundation for action.",
+      steps: [
+        "Uncover user needs",
+        "Define project goals",
+        "Explore possibilities",
+        "Align shared vision",
+        "Clarify core purpose",
+      ],
+    },
+    {
+      id: "02",
+      title: "Design Development",
+      description:
+        "Before any design work starts, we dive deep into your brand story, user needs, and business objectives. We believe a successful project is built on clarity and alignment — which is why our first step is always thoughtful exploration and strategy.",
+      steps: [
+        "Conceptual ideas",
+        "Develop layouts",
+        "Select key materials",
+        "Finalize design",
+        "Integrate experience",
+      ],
+    },
+    {
+      id: "03",
+      title: "Build & Execute",
+      description:
+        "We believe great work starts with alignment. Our process begins by identifying your business needs, your goals, and your unique edge. Through collaborative planning and strategic thinking, we build a comprehensive roadmap for success.",
+      steps: [
+        "Mobilize project team",
+        "Coordinate phases",
+        "Monitor quality control",
+        "Implement solutions",
+        "Deliver final product",
+      ],
+    },
+  ];
+
+  const toggleService = (index) => {
+    setActiveService(activeService === index ? null : index);
+  };
+
+  return (
+    <div ref={containerRef} className=" min-h-screen py-20 px-6 md:px-20">
+      <div className="max-w-8xl mx-auto">
+        {/* Header Section */}
+        <div className="flex flex-col lg:flex-row justify-between items-start mb-20">
+          <div className="lg:w-1/2 mb-8 lg:mb-0">
+            <p className="text-gray-600 text-lg leading-relaxed animate-fadeInUp">
+              At Planova, we create spaces that blend seamlessly with their surroundings,
+              enhancing both functionality and aesthetic appeal. Our process is thoughtful,
+              collaborative, and tailored to bring
+            </p>
+          </div>
+
+          <div className="lg:w-1/2 lg:pl-20">
+            <h2 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight animate-slideInRight">
+              Services We Provide
+            </h2>
+          </div>
+        </div>
+
+        {/* Services List */}
+        <div>
+          {services.map((service, index) => (
+            <div
+              key={service.id}
+              className="border-t border-gray-300 py-16 group cursor-pointer relative"
+              onMouseEnter={() => setHoveredService(index)}
+              onMouseLeave={() => setHoveredService(null)}
+            >
+              {/* Service Row */}
+              <div className="flex flex-col lg:flex-row gap-12">
+                {/* Left Side: ID + Title */}
+                <div className="lg:w-1/3 flex gap-6">
+                  <span className="text-orange-500 font-bold text-xl">({service.id})</span>
+                  <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 group-hover:text-gray-700 transition-all duration-500">
+                    {service.title}
+                  </h3>
+                </div>
+
+                {/* Middle: Description */}
+                <div className="lg:w-1/3 border-l border-gray-300 pl-10 relative">
+                  <p className="text-gray-600 text-lg leading-relaxed">{service.description}</p>
+
+                  {/* Hover Button */}
+                  {hoveredService === index && (
+                    <button
+                      className="absolute bg-gray-900 text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all duration-300"
+                      style={{
+                        left: "0",
+                        bottom: "-24px",
+                        transform: `translateX(${mousePosition.x * 0.1}px) translateY(${mousePosition.y * 0.1}px)`,
+                        transition: "transform 0.2s ease-out, background-color 0.3s ease",
+                      }}
+                      onClick={() => toggleService(index)}
+                    >
+                      {activeService === index ? "Close" : "Open"}
+                    </button>
+                  )}
+                </div>
+
+                {/* Right Side: Steps */}
+                <div className="lg:w-1/3">
+                  <div className="space-y-3">
+                    {service.steps.map((step, stepIndex) => (
+                      <div key={stepIndex} className="flex items-start gap-3 group/step">
+                        <span className="text-gray-900 font-semibold text-lg">{stepIndex + 1}.</span>
+                        <span className="text-gray-700 text-lg group-hover/step:text-gray-900 transition-colors duration-300">
+                          {step}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Expandable Content */}
+              <div
+                className={`overflow-hidden transition-all duration-700 ease-in-out ${
+                  activeService === index ? "max-h-96 opacity-100 mt-12" : "max-h-0 opacity-0"
+                }`}
+              >
+                <div className="bg-gray-100 rounded-2xl p-8 lg:ml-[calc(33%+2.5rem)]">
+                  <p className="text-gray-700 text-lg leading-relaxed">
+                    Expanded content for {service.title}. This section provides additional details about the service process,
+                    methodologies, and expected outcomes. Our collaborative approach ensures that every project meets your
+                    specific requirements and exceeds expectations.
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom Divider */}
+        <div className="border-t border-gray-300 mt-16"></div>
+      </div>
+
+      {/* Animations */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes slideInRight {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .animate-fadeInUp {
+          animation: fadeInUp 1s ease-out;
+        }
+
+        .animate-slideInRight {
+          animation: slideInRight 1s ease-out 0.3s both;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default Services;
+

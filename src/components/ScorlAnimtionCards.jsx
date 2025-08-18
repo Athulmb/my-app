@@ -69,9 +69,10 @@ const ScrollAnimatedStackSections = () => {
         const activeIndex = Math.floor(exactIndex);
         const progressWithinCard = exactIndex - activeIndex;
 
-        // Keep container fixed until last card is done
+        // ✅ Keep container fixed except last card
         if (activeIndex === sections.length - 1) {
           containerRef.current.style.position = "relative";
+          containerRef.current.style.top = "auto";
         } else {
           containerRef.current.style.position = "fixed";
           containerRef.current.style.top = "0";
@@ -86,31 +87,33 @@ const ScrollAnimatedStackSections = () => {
           for (let i = 0; i < cards.length; i++) {
             if (i < activeIndex) {
               cards[i].style.transform = "translateY(-100%)";
+              cards[i].style.opacity = "1";
               cards[i].style.visibility = "hidden";
               cards[i].style.zIndex = "1";
             } else if (i === activeIndex) {
-              // current active card
               cards[i].style.transform = "translateY(0)";
+              cards[i].style.opacity = "1";
               cards[i].style.visibility = "visible";
               cards[i].style.zIndex = "10";
             } else if (i === activeIndex + 1 && activeIndex < sections.length - 1) {
-              // slide next card smoothly
-              const slideProgress = progressWithinCard;
-              const translateY = (1 - slideProgress) * 100;
-              cards[i].style.transform = `translateY(${translateY}%)`;
-              cards[i].style.visibility = "visible";
-              cards[i].style.zIndex = "15";
-            } else {
-              // ✅ For the last card: never push it down (avoid blank screen)
-              if (i === sections.length - 1) {
-                cards[i].style.transform = "translateY(0)";
-                cards[i].style.visibility = "visible";
-                cards[i].style.zIndex = "10";
-              } else {
+              if (progressWithinCard < 0.3) {
                 cards[i].style.transform = "translateY(100%)";
+                cards[i].style.opacity = "1";
                 cards[i].style.visibility = "hidden";
-                cards[i].style.zIndex = "1";
+                cards[i].style.zIndex = "15";
+              } else {
+                const slideProgress = (progressWithinCard - 0.3) / 0.7;
+                const translateY = (1 - slideProgress) * 100;
+                cards[i].style.transform = `translateY(${translateY}%)`;
+                cards[i].style.opacity = "1";
+                cards[i].style.visibility = "visible";
+                cards[i].style.zIndex = "15";
               }
+            } else {
+              cards[i].style.transform = "translateY(100%)";
+              cards[i].style.opacity = "1";
+              cards[i].style.visibility = "hidden";
+              cards[i].style.zIndex = "1";
             }
           }
         }
@@ -156,9 +159,11 @@ const ScrollAnimatedStackSections = () => {
             {sections.map((section, index) => (
               <div
                 key={section.id}
-                className="absolute w-full h-full transition-transform duration-500 ease-out"
+                className="absolute w-full h-full"
                 style={{
+                  zIndex: 10,
                   transform: index === 0 ? "translateY(0)" : "translateY(100%)",
+                  opacity: 1,
                   visibility: index === 0 ? "visible" : "hidden",
                 }}
               >
