@@ -143,9 +143,21 @@ const ScrollAnimatedStackSections = () => {
               Latest Projects
             </h1>
             <div className="hidden md:block">
-              <button className="bg-[#FF5722] hover:bg-[#E64A19] text-white px-8 py-3 rounded-xl font-semibold text-lg transition-colors duration-200">
-                See All project
-              </button>
+            <div className="hidden md:block">
+                    <button className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-[#FF5700]">
+                        {/* Black Overlay (expands from bottom center) */}
+                        <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
+
+                        {/* Initial Text (moves up more on hover) */}
+                        <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
+                            see all projects
+                        </span>
+
+                        {/* New Text (slides in from bottom) */}
+                        <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
+see all projects                        </span>
+                    </button>
+                </div>
             </div>
           </div>
         </div>
