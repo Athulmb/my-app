@@ -88,7 +88,7 @@ const ScrollAnimatedStackSections = () => {
             if (i < activeIndex) {
               cards[i].style.transform = "translateY(-100%)";
               cards[i].style.opacity = "1";
-              cards[i].style.visibility = "hidden";
+              cards[i].style.visibility = "visible";
               cards[i].style.zIndex = "1";
             } else if (i === activeIndex) {
               cards[i].style.transform = "translateY(0)";
@@ -99,7 +99,7 @@ const ScrollAnimatedStackSections = () => {
               if (progressWithinCard < 0.3) {
                 cards[i].style.transform = "translateY(100%)";
                 cards[i].style.opacity = "1";
-                cards[i].style.visibility = "hidden";
+                cards[i].style.visibility = "visible";
                 cards[i].style.zIndex = "15";
               } else {
                 const slideProgress = (progressWithinCard - 0.3) / 0.7;
@@ -112,7 +112,7 @@ const ScrollAnimatedStackSections = () => {
             } else {
               cards[i].style.transform = "translateY(100%)";
               cards[i].style.opacity = "1";
-              cards[i].style.visibility = "hidden";
+              cards[i].style.visibility = "visible";
               cards[i].style.zIndex = "1";
             }
           }

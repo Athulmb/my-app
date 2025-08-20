@@ -38,17 +38,21 @@ const Navbar = () => {
     >
         <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-20 py-4">
           {/* Logo */}
-          <div className="flex flex-col items-start">
-            {/* Main Title */}
-            <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white">
-              GULF
-            </div>
-      
-            {/* Subtitle */}
-            <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 mt-1">
-              Training and Manufacturing Group
-            </div>
-          </div>
+          {/* Logo */}
+<div className="flex flex-col items-start">
+  {/* Image Logo */}
+  <img
+    src="/logo.png"
+    alt="Gulf Logo"
+    className="h-16 w-auto sm:h-14 md:h-16 lg:h-24 object-contain"
+  />
+
+  {/* Subtitle */}
+  <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 mt-1">
+    Training and Manufacturing Group
+  </div>
+</div>
+
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center bg-slate-600 rounded-md px-2 py-1 space-x-2">
