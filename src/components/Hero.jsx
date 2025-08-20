@@ -62,7 +62,7 @@ const Hero = () => {
         {/* Left Text Section */}
         <div className="w-full lg:w-1/2">
           <div className="relative mb-8">
-            <div className="w-28 h-[4px] bg-orange-500 "></div>
+            <div className="w-28 h-[4px] bg-button "></div>
             <p className="text-sm text-gray-300 leading-relaxed">
               Reimagining bioprocess safety with elegant design and top-tier<br />
               viral clearance.

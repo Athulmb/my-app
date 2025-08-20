@@ -13,7 +13,7 @@ const Footer = () => {
   const logoLetters = [
     { letter: 'G', color: 'text-[#24342E]' },
     { letter: 'U', color: 'text-[#24342E]' },
-    { letter: 'L', color: 'text-[#F2410C]' },
+    { letter: 'L', color: 'text-button' },
     { letter: 'F', color: 'text-[#24342E]' },
   ];
 
@@ -84,7 +84,7 @@ const Footer = () => {
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-2 py-2 border-b border-[#24342E] bg-transparent text-[#24342E] placeholder-gray-500 focus:border-[#F2410C] outline-none transition-colors duration-300"
+                className="flex-1 px-2 py-2 border-b border-[#24342E] bg-transparent text-[#24342E] placeholder-gray-500 focus:border-button outline-none transition-colors duration-300"
               />
              <button                  onClick={handleSubmit}
               className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-button">
@@ -115,8 +115,8 @@ const Footer = () => {
                 href={link.href}
                 className={`block text-base ${
                   link.active 
-                    ? 'text-[#F2410C] font-medium' 
-                    : 'text-[#24342E] hover:text-[#F2410C]'
+                    ? 'text-button font-medium' 
+                    : 'text-[#24342E] hover:text-button'
                 }`}
               >
                 {link.title}
@@ -130,7 +130,7 @@ const Footer = () => {
               <a
                 key={index}
                 href={link.href}
-                className="block text-base text-[#24342E] hover:text-[#F2410C]"
+                className="block text-base text-[#24342E] hover:text-button"
               >
                 {link.title}
               </a>
@@ -143,7 +143,7 @@ const Footer = () => {
               <a
                 key={index}
                 href={link.href}
-                className="block text-base text-[#24342E] hover:text-[#F2410C]"
+                className="block text-base text-[#24342E] hover:text-button"
               >
                 {link.title}
               </a>
@@ -169,7 +169,7 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className="w-16 h-16 bg-[#F2F0E9] rounded-lg flex items-center justify-center text-[#24342E] hover:text-[#F2410C] transition-all duration-300"
+                  className="w-16 h-16 bg-[#F2F0E9] rounded-lg flex items-center justify-center text-[#24342E] hover:text-button transition-all duration-300"
                 >
                   <social.icon size={24} />
                 </a>
