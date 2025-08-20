@@ -66,7 +66,7 @@ const Navbar = () => {
                         onMouseLeave={() => setDropdownOpen(false)}
                     >
                         <button className="flex items-center px-4 py-2 font-medium text-white rounded-md hover:text-primary hover:bg-slate-700 transition duration-300">
-                            Pages{" "}
+                            Projects{" "}
                             <ChevronDown
                                 className={`ml-1 w-4 h-4 transform transition-transform duration-500 ${dropdownOpen ? "rotate-180" : "rotate-0"
                                     }`}
@@ -76,7 +76,7 @@ const Navbar = () => {
                         {/* Dropdown */}
                         {/* Dropdown */}
                         <div
-                            className={`absolute left-0 top-full mt-2 w-[500px] h-[300px] bg-secondary text-gray-800 rounded-xl shadow-xl z-50 
+                            className={`absolute left-0 top-full mt-2 w-[370px] h-[300px] bg-secondary text-gray-800 rounded-xl shadow-xl z-50 
     transform transition-all duration-500 ease-out
     ${dropdownOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 translate-y-6 invisible"}`}
                         >
@@ -84,19 +84,19 @@ const Navbar = () => {
                                 href="#"
                                 className="block px-6 py-4 text-lg hover:bg-gray-200 hover:text-orange-600 rounded-t-md transition duration-300"
                             >
-                                Page 1
+                               Project 1
                             </a>
                             <a
                                 href="#"
                                 className="block px-6 py-4 text-lg hover:bg-gray-200 hover:text-orange-600 transition duration-300"
                             >
-                                Page 2
+                                Project 2
                             </a>
                             <a
                                 href="#"
                                 className="block px-6 py-4 text-lg hover:bg-gray-200 hover:text-orange-600 rounded-b-md transition duration-300"
                             >
-                                Page 3
+                                Project 3
                             </a>
                         </div>
 

@@ -61,25 +61,23 @@ const ScrollAnimatedStackSections = () => {
       const sectionTop = rect.top;
       const sectionBottom = rect.bottom;
 
-      if (sectionTop <= 0 && sectionBottom >= window.innerHeight) {
-        const scrollProgress =
-          Math.abs(sectionTop) / (sectionHeight - window.innerHeight);
+      if (sectionTop <= 0 && sectionBottom >= 0) {
+        let scrollProgress = Math.min(
+          Math.abs(sectionTop) / (sectionHeight - window.innerHeight),
+          1
+        );
+
         const total = sections.length;
         const exactIndex = scrollProgress * (total - 1);
         const activeIndex = Math.floor(exactIndex);
         const progressWithinCard = exactIndex - activeIndex;
 
-        // ✅ Keep container fixed except last card
-        if (activeIndex === sections.length - 1) {
-          containerRef.current.style.position = "relative";
-          containerRef.current.style.top = "auto";
-        } else {
-          containerRef.current.style.position = "fixed";
-          containerRef.current.style.top = "0";
-          containerRef.current.style.left = "0";
-          containerRef.current.style.width = "100%";
-          containerRef.current.style.height = "100vh";
-        }
+        // Keep container fixed until scroll passes last card
+        containerRef.current.style.position = "fixed";
+        containerRef.current.style.top = "0";
+        containerRef.current.style.left = "0";
+        containerRef.current.style.width = "100%";
+        containerRef.current.style.height = "100vh";
 
         if (cardsContainerRef.current) {
           const cards = cardsContainerRef.current.children;
@@ -96,19 +94,12 @@ const ScrollAnimatedStackSections = () => {
               cards[i].style.visibility = "visible";
               cards[i].style.zIndex = "10";
             } else if (i === activeIndex + 1 && activeIndex < sections.length - 1) {
-              if (progressWithinCard < 0.3) {
-                cards[i].style.transform = "translateY(100%)";
-                cards[i].style.opacity = "1";
-                cards[i].style.visibility = "hidden";
-                cards[i].style.zIndex = "15";
-              } else {
-                const slideProgress = (progressWithinCard - 0.3) / 0.7;
-                const translateY = (1 - slideProgress) * 100;
-                cards[i].style.transform = `translateY(${translateY}%)`;
-                cards[i].style.opacity = "1";
-                cards[i].style.visibility = "visible";
-                cards[i].style.zIndex = "15";
-              }
+              const slideProgress = Math.min(Math.max((progressWithinCard - 0.3) / 0.7, 0), 1);
+              const translateY = (1 - slideProgress) * 100;
+              cards[i].style.transform = `translateY(${translateY}%)`;
+              cards[i].style.opacity = "1";
+              cards[i].style.visibility = "visible";
+              cards[i].style.zIndex = "15";
             } else {
               cards[i].style.transform = "translateY(100%)";
               cards[i].style.opacity = "1";
@@ -117,8 +108,15 @@ const ScrollAnimatedStackSections = () => {
             }
           }
         }
+
+        // Release container only after last card fully scrolled
+        if (scrollProgress >= 1) {
+          containerRef.current.style.position = "relative";
+          containerRef.current.style.top = "auto";
+        }
       } else {
         containerRef.current.style.position = "relative";
+        containerRef.current.style.top = "auto";
       }
     };
 
@@ -143,21 +141,15 @@ const ScrollAnimatedStackSections = () => {
               Latest Projects
             </h1>
             <div className="hidden md:block">
-            <div className="hidden md:block">
-                    <button className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-[#FF5700]">
-                        {/* Black Overlay (expands from bottom center) */}
-                        <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
-
-                        {/* Initial Text (moves up more on hover) */}
-                        <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
-                            see all projects
-                        </span>
-
-                        {/* New Text (slides in from bottom) */}
-                        <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
-see all projects                        </span>
-                    </button>
-                </div>
+              <button className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-[#FF5700]">
+                <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
+                <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
+                  see all projects
+                </span>
+                <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
+                  see all projects
+                </span>
+              </button>
             </div>
           </div>
         </div>
