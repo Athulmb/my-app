@@ -70,26 +70,26 @@ const Services = () => {
   };
 
   return (
-    <div ref={containerRef} className="min-h-screen py-20 px-6 md:px-20 font-manrope">
+    <div ref={containerRef} className="min-h-screen py-20 px-6 md:px-20 font-manrope bg-secondary">
       <div className="max-w-8xl mx-auto">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start mb-12 lg:mb-20 px-4 lg:px-0">
-  {/* Text Section */}
-  <div className="w-full lg:w-1/3 mb-8 lg:mb-0 px-0 lg:px-6">
-    <p className="text-[#1D2D28] text-base sm:text-lg leading-relaxed animate-fadeInUp font-normal">
-      At Planova, we create spaces that blend seamlessly with their surroundings,
-      enhancing both functionality and aesthetic appeal. Our process is thoughtful,
-      collaborative, and tailored to bring
-    </p>
-  </div>
+          {/* Text Section */}
+          <div className="w-full lg:w-1/3 mb-8 lg:mb-0 px-0 lg:px-6">
+            <p className="text-[#1D2D28] text-base sm:text-lg leading-relaxed animate-fadeInUp font-normal">
+              At Planova, we create spaces that blend seamlessly with their surroundings,
+              enhancing both functionality and aesthetic appeal. Our process is thoughtful,
+              collaborative, and tailored to bring
+            </p>
+          </div>
 
-  {/* Heading Section */}
-  <div className="w-full lg:w-2/3 lg:pl-12 flex justify-start lg:justify-center">
-    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[5rem] font-bold text-gray-900 leading-snug lg:leading-tight animate-slideInRight tracking-tight">
-      Services We Provide
-    </h2>
-  </div>
-</div>
+          {/* Heading Section */}
+          <div className="w-full lg:w-2/3 lg:pl-12 flex justify-start lg:justify-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[5rem] font-bold text-gray-900 leading-snug lg:leading-tight animate-slideInRight tracking-tight">
+              Services We Provide
+            </h2>
+          </div>
+        </div>
 
 
         {/* Services List */}
@@ -105,7 +105,7 @@ const Services = () => {
               <div className="flex flex-col lg:flex-row gap-12">
                 {/* Left Side: ID + Title */}
                 <div className="lg:w-1/3 flex gap-6">
-                  <span className="text-[#F55A2C] font-semibold text-xl">({service.id})</span>
+                  <span className="text-button  font-semibold text-2xl">({service.id})</span>
                   <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 group-hover:text-gray-700 transition-all duration-500">
                     {service.title}
                   </h3>
@@ -113,29 +113,29 @@ const Services = () => {
 
                 {/* Middle: Description */}
                 <div className="lg:w-1/3 border-l border-gray-300 pl-10 relative">
-                <p className="text-[#1D2D28] text-sm  leading-[1.6] font-normal">
-                {service.description}
+                  <p className="text-[#1D2D28] text-sm  leading-[1.6] font-normal">
+                    {service.description}
                   </p>
 
                   {/* Hover Button */}
                   {hoveredService === index && (
                     <button
-                    className="absolute bg-gray-900 text-white font-bold hover:bg-gray-800 transition-all duration-300 flex items-center justify-center text-sm"
-                    style={{
-                      left: "50%",
-                      bottom: "-32px",
-                      transform: `translate(-50%, 0) translateX(${mousePosition.x * 1}px) translateY(${mousePosition.y * 1}px)`,
-                      width: "80px",       // smaller width
-                      height: "40px",       // smaller height
-                      borderRadius: "50%",  // keeps oval shape
-                      transition: "transform 0.1s ease-out, background-color 0.3s ease",
-                    }}
-                    onClick={() => toggleService(index)}
-                  >
-                    {activeService === index ? "Close" : "Open"}
-                  </button>
-                  
-                  
+                      className="absolute bg-gray-900 text-white font-bold hover:bg-gray-800 transition-all duration-300 flex items-center justify-center text-sm"
+                      style={{
+                        left: "50%",
+                        bottom: "-32px",
+                        transform: `translate(-50%, 0) translateX(${mousePosition.x * 1}px) translateY(${mousePosition.y * 1}px)`,
+                        width: "80px",       // smaller width
+                        height: "40px",       // smaller height
+                        borderRadius: "50%",  // keeps oval shape
+                        transition: "transform 0.1s ease-out, background-color 0.3s ease",
+                      }}
+                      onClick={() => toggleService(index)}
+                    >
+                      {activeService === index ? "Close" : "Open"}
+                    </button>
+
+
                   )}
                 </div>
 
@@ -158,9 +158,8 @@ const Services = () => {
 
               {/* Expandable Content */}
               <div
-                className={`overflow-hidden transition-all duration-700 ease-in-out ${
-                  activeService === index ? "max-h-96 opacity-100 mt-12" : "max-h-0 opacity-0"
-                }`}
+                className={`overflow-hidden transition-all duration-700 ease-in-out ${activeService === index ? "max-h-96 opacity-100 mt-12" : "max-h-0 opacity-0"
+                  }`}
               >
                 <div className="bg-gray-100 rounded-2xl p-8 lg:ml-[calc(33%+2.5rem)]">
                   <p className="text-gray-700 text-base leading-[1.6] font-normal">

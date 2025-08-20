@@ -80,7 +80,7 @@ const StatItem = ({ number, title, description, delay }) => {
 
 // Stats Card
 const StatsCard = () => (
-  <div className="bg-[#1F2E2B] text-white rounded-lg p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 md:space-y-8 w-full sm:w-[300px] md:w-[350px] lg:w-[450px] min-h-[500px] sm:min-h-[600px] md:min-h-[700px] flex flex-col justify-center">
+  <div className="bg-[#1F2E2B] text-white rounded-lg p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 md:space-y-8 w-full sm:w-[300px] md:w-[350px] lg:w-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] flex flex-col justify-center">
     <StatItem
       number={82}
       title="Projects"
@@ -110,7 +110,7 @@ const AboutSection = () => {
   const y = useTransform(scrollYProgress, [0, 0.5], ["0%", "-50%"]);
 
   return (
-    <section ref={ref} className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8">
+    <section ref={ref} className="py-8 sm:py-12 md:py-16 px-4 sm:px-6 md:px-8 bg-secondary">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 items-start">
         {/* Left Content */}
         <motion.div

@@ -6,24 +6,36 @@ const Navbar = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [showNavbar, setShowNavbar] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
-            if (window.scrollY > lastScrollY) {
-                setShowNavbar(false);
-            } else {
-                setShowNavbar(true);
-            }
-            setLastScrollY(window.scrollY);
+          if (window.scrollY > lastScrollY) {
+            setShowNavbar(false);
+          } else {
+            setShowNavbar(true);
+          }
+          setLastScrollY(window.scrollY);
+    
+          // Change background only when scrolled past 50px
+          if (window.scrollY > 50) {
+            setScrolled(true);
+          } else {
+            setScrolled(false);
+          }
         };
+    
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [lastScrollY]);
+      }, [lastScrollY]);
 
     return (
         <nav
-        className={`fixed top-0 left-0 w-full z-50 bg-transparent text-white transition-transform duration-500 ${showNavbar ? "translate-y-0" : "-translate-y-full"} `}
-      >
+      className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-500
+        ${showNavbar ? "translate-y-0" : "-translate-y-full"} 
+        ${scrolled ? "bg-slate-700 shadow-md" : "bg-transparent"}
+      `}
+    >
         <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-20 py-4">
           {/* Logo */}
           <div className="flex flex-col items-start">

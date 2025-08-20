@@ -82,11 +82,12 @@ const Hero = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <img
-              src="https://cdn.prod.website-files.com/6864c5e4479c3c44f5272e57/688b71a1c25c527be71c2705_top-image.jpg"
-              alt="modern building"
-              className="w-full rounded-lg h-32 object-cover mb-4 hover:scale-105 transition-all duration-300"
-            />
+           <img
+  src="HeroMain.png"
+  alt="modern building"
+  className="w-full rounded-lg h-32 object-cover mb-4 hover:scale-105 transition-all duration-300 brightness-150"
+/>
+
             <p className="text-gray-300 text-sm mb-6 leading-relaxed">
               With a commitment to sustainability and innovative solutions, we create
               beautiful, functional spaces.
