@@ -70,24 +70,27 @@ const Services = () => {
   };
 
   return (
-    <div ref={containerRef} className=" min-h-screen py-20 px-6 md:px-20">
+    <div ref={containerRef} className="min-h-screen py-20 px-6 md:px-20 font-manrope">
       <div className="max-w-8xl mx-auto">
         {/* Header Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start mb-20">
-          <div className="lg:w-1/2 mb-8 lg:mb-0">
-            <p className="text-gray-600 text-lg leading-relaxed animate-fadeInUp">
-              At Planova, we create spaces that blend seamlessly with their surroundings,
-              enhancing both functionality and aesthetic appeal. Our process is thoughtful,
-              collaborative, and tailored to bring
-            </p>
-          </div>
+        <div className="flex flex-col lg:flex-row justify-between items-start mb-12 lg:mb-20 px-4 lg:px-0">
+  {/* Text Section */}
+  <div className="w-full lg:w-1/3 mb-8 lg:mb-0 px-0 lg:px-6">
+    <p className="text-[#1D2D28] text-base sm:text-lg leading-relaxed animate-fadeInUp font-normal">
+      At Planova, we create spaces that blend seamlessly with their surroundings,
+      enhancing both functionality and aesthetic appeal. Our process is thoughtful,
+      collaborative, and tailored to bring
+    </p>
+  </div>
 
-          <div className="lg:w-1/2 lg:pl-20">
-            <h2 className="text-5xl lg:text-7xl font-bold text-gray-900 leading-tight animate-slideInRight">
-              Services We Provide
-            </h2>
-          </div>
-        </div>
+  {/* Heading Section */}
+  <div className="w-full lg:w-2/3 lg:pl-12 flex justify-start lg:justify-center">
+    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[5rem] font-bold text-gray-900 leading-snug lg:leading-tight animate-slideInRight tracking-tight">
+      Services We Provide
+    </h2>
+  </div>
+</div>
+
 
         {/* Services List */}
         <div>
@@ -102,7 +105,7 @@ const Services = () => {
               <div className="flex flex-col lg:flex-row gap-12">
                 {/* Left Side: ID + Title */}
                 <div className="lg:w-1/3 flex gap-6">
-                  <span className="text-orange-500 font-bold text-xl">({service.id})</span>
+                  <span className="text-[#F55A2C] font-semibold text-xl">({service.id})</span>
                   <h3 className="text-3xl lg:text-4xl font-bold text-gray-900 group-hover:text-gray-700 transition-all duration-500">
                     {service.title}
                   </h3>
@@ -110,32 +113,41 @@ const Services = () => {
 
                 {/* Middle: Description */}
                 <div className="lg:w-1/3 border-l border-gray-300 pl-10 relative">
-                  <p className="text-gray-600 text-lg leading-relaxed">{service.description}</p>
+                <p className="text-[#1D2D28] text-sm  leading-[1.6] font-normal">
+                {service.description}
+                  </p>
 
                   {/* Hover Button */}
                   {hoveredService === index && (
                     <button
-                      className="absolute bg-gray-900 text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-all duration-300"
-                      style={{
-                        left: "0",
-                        bottom: "-24px",
-                        transform: `translateX(${mousePosition.x * 0.1}px) translateY(${mousePosition.y * 0.1}px)`,
-                        transition: "transform 0.2s ease-out, background-color 0.3s ease",
-                      }}
-                      onClick={() => toggleService(index)}
-                    >
-                      {activeService === index ? "Close" : "Open"}
-                    </button>
+                    className="absolute bg-gray-900 text-white font-bold hover:bg-gray-800 transition-all duration-300 flex items-center justify-center text-sm"
+                    style={{
+                      left: "50%",
+                      bottom: "-32px",
+                      transform: `translate(-50%, 0) translateX(${mousePosition.x * 1}px) translateY(${mousePosition.y * 1}px)`,
+                      width: "80px",       // smaller width
+                      height: "40px",       // smaller height
+                      borderRadius: "50%",  // keeps oval shape
+                      transition: "transform 0.1s ease-out, background-color 0.3s ease",
+                    }}
+                    onClick={() => toggleService(index)}
+                  >
+                    {activeService === index ? "Close" : "Open"}
+                  </button>
+                  
+                  
                   )}
                 </div>
 
                 {/* Right Side: Steps */}
-                <div className="lg:w-1/3">
+                <div className="lg:w-1/3 flex justify-center">
                   <div className="space-y-3">
                     {service.steps.map((step, stepIndex) => (
                       <div key={stepIndex} className="flex items-start gap-3 group/step">
-                        <span className="text-gray-900 font-semibold text-lg">{stepIndex + 1}.</span>
-                        <span className="text-gray-700 text-lg group-hover/step:text-gray-900 transition-colors duration-300">
+                        <span className="text-gray-900 font-medium text-sm">
+                          {stepIndex + 1}.
+                        </span>
+                        <span className="text-gray-700 text-sm font-bold group-hover/step:text-gray-900 transition-colors duration-300">
                           {step}
                         </span>
                       </div>
@@ -151,7 +163,7 @@ const Services = () => {
                 }`}
               >
                 <div className="bg-gray-100 rounded-2xl p-8 lg:ml-[calc(33%+2.5rem)]">
-                  <p className="text-gray-700 text-lg leading-relaxed">
+                  <p className="text-gray-700 text-base leading-[1.6] font-normal">
                     Expanded content for {service.title}. This section provides additional details about the service process,
                     methodologies, and expected outcomes. Our collaborative approach ensures that every project meets your
                     specific requirements and exceeds expectations.
@@ -203,4 +215,3 @@ const Services = () => {
 };
 
 export default Services;
-

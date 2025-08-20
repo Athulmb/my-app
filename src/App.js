@@ -14,10 +14,10 @@ const App = () => {
    <Hero />
    <Service />
    <AboutSection />
-   <ScorlAnimtionCards />
+   {/* <ScorlAnimtionCards />
    <Review />
    <FaqSection />
-   <Footer />
+    <Footer /> */}
  
   
    </>
