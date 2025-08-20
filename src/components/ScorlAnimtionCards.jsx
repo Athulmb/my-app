@@ -88,7 +88,7 @@ const ScrollAnimatedStackSections = () => {
             if (i < activeIndex) {
               cards[i].style.transform = "translateY(-100%)";
               cards[i].style.opacity = "1";
-              cards[i].style.visibility = "visible";
+              cards[i].style.visibility = "hidden";
               cards[i].style.zIndex = "1";
             } else if (i === activeIndex) {
               cards[i].style.transform = "translateY(0)";
@@ -99,7 +99,7 @@ const ScrollAnimatedStackSections = () => {
               if (progressWithinCard < 0.3) {
                 cards[i].style.transform = "translateY(100%)";
                 cards[i].style.opacity = "1";
-                cards[i].style.visibility = "visible";
+                cards[i].style.visibility = "hidden";
                 cards[i].style.zIndex = "15";
               } else {
                 const slideProgress = (progressWithinCard - 0.3) / 0.7;
@@ -112,7 +112,7 @@ const ScrollAnimatedStackSections = () => {
             } else {
               cards[i].style.transform = "translateY(100%)";
               cards[i].style.opacity = "1";
-              cards[i].style.visibility = "visible";
+              cards[i].style.visibility = "hidden";
               cards[i].style.zIndex = "1";
             }
           }
@@ -144,7 +144,7 @@ const ScrollAnimatedStackSections = () => {
             </h1>
             <div className="hidden md:block">
               <div className="hidden md:block">
-                <button className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-[#FF5700]">
+                <button className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-button">
                   {/* Black Overlay (expands from bottom center) */}
                   <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
 
@@ -184,7 +184,7 @@ const ScrollAnimatedStackSections = () => {
                   <div className="flex gap-6 h-full relative">
                     {/* Orange Number Badge - half outside left panel */}
                     <div className="absolute left-0 top-8 z-20 transform -translate-x-1/2">
-                      <div className="bg-[#FF5700] text-white px-4 py-3 rounded-lg font-bold text-xl shadow-xl min-w-[60px] text-center">
+                      <div className="bg-button text-white px-4 py-3 rounded-lg font-bold text-xl shadow-xl min-w-[60px] text-center">
                         {section.number}
                       </div>
                     </div>

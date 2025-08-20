@@ -86,12 +86,21 @@ const Footer = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="flex-1 px-2 py-2 border-b border-[#24342E] bg-transparent text-[#24342E] placeholder-gray-500 focus:border-[#F2410C] outline-none transition-colors duration-300"
               />
-              <button
-                onClick={handleSubmit}
-                className="bg-[#F2410C] text-white px-6 py-2 rounded hover:bg-[#d93400] transition-all duration-300 font-medium"
-              >
-                Submit
-              </button>
+             <button                  onClick={handleSubmit}
+              className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-button">
+                  {/* Black Overlay (expands from bottom center) */}
+                  <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
+
+                  {/* Initial Text (moves up more on hover) */}
+                  <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
+                    see all projects
+                  </span>
+
+                  {/* New Text (slides in from bottom) */}
+                  <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
+                    see all projects
+                  </span>
+                </button>
             </div>
           </div>
         </div>
@@ -145,7 +154,7 @@ const Footer = () => {
         {/* Social Media + Copyright */}
         <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
           <div className="text-[#24342E]/70 animate-fadeInUp">
-            Copyright 2025 Planova. All rights reserved.
+            Copyright 2025 . All rights reserved.
           </div>
           
           <div className="flex items-center gap-8">
@@ -167,13 +176,7 @@ const Footer = () => {
               ))}
             </div>
 
-            {/* Credit */}
-            <div className="text-[#24342E]/70">
-              <span className="text-[#F2410C] hover:underline cursor-pointer transition-colors duration-300">
-                Webflow
-              </span>{' '}
-              Template handcrafted
-            </div>
+            
           </div>
         </div>
       </div>
