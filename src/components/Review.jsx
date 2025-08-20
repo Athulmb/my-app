@@ -58,7 +58,7 @@ const ReviewsSection = () => {
     : [reviews[index % reviews.length], reviews[(index + 1) % reviews.length]];
 
   return (
-    <div className="bg-[#f6f6ea] py-20 pl-4 md:pl-16">
+    <div className="bg-secondary py-20 pl-4 md:pl-16">
       <div className="w-full mx-auto">
         {/* Heading */}
         <h2 className="text-4xl md:text-6xl lg:text-[90px] font-bold text-gray-900 mb-10 leading-tight">

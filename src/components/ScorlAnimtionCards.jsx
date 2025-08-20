@@ -61,23 +61,25 @@ const ScrollAnimatedStackSections = () => {
       const sectionTop = rect.top;
       const sectionBottom = rect.bottom;
 
-      if (sectionTop <= 0 && sectionBottom >= 0) {
-        let scrollProgress = Math.min(
-          Math.abs(sectionTop) / (sectionHeight - window.innerHeight),
-          1
-        );
-
+      if (sectionTop <= 0 && sectionBottom >= window.innerHeight) {
+        const scrollProgress =
+          Math.abs(sectionTop) / (sectionHeight - window.innerHeight);
         const total = sections.length;
         const exactIndex = scrollProgress * (total - 1);
         const activeIndex = Math.floor(exactIndex);
         const progressWithinCard = exactIndex - activeIndex;
 
-        // Keep container fixed until scroll passes last card
-        containerRef.current.style.position = "fixed";
-        containerRef.current.style.top = "0";
-        containerRef.current.style.left = "0";
-        containerRef.current.style.width = "100%";
-        containerRef.current.style.height = "100vh";
+        // ✅ Keep container fixed except last card
+        if (activeIndex === sections.length - 1) {
+          containerRef.current.style.position = "relative";
+          containerRef.current.style.top = "auto";
+        } else {
+          containerRef.current.style.position = "fixed";
+          containerRef.current.style.top = "0";
+          containerRef.current.style.left = "0";
+          containerRef.current.style.width = "100%";
+          containerRef.current.style.height = "100vh";
+        }
 
         if (cardsContainerRef.current) {
           const cards = cardsContainerRef.current.children;
@@ -94,12 +96,19 @@ const ScrollAnimatedStackSections = () => {
               cards[i].style.visibility = "visible";
               cards[i].style.zIndex = "10";
             } else if (i === activeIndex + 1 && activeIndex < sections.length - 1) {
-              const slideProgress = Math.min(Math.max((progressWithinCard - 0.3) / 0.7, 0), 1);
-              const translateY = (1 - slideProgress) * 100;
-              cards[i].style.transform = `translateY(${translateY}%)`;
-              cards[i].style.opacity = "1";
-              cards[i].style.visibility = "visible";
-              cards[i].style.zIndex = "15";
+              if (progressWithinCard < 0.3) {
+                cards[i].style.transform = "translateY(100%)";
+                cards[i].style.opacity = "1";
+                cards[i].style.visibility = "hidden";
+                cards[i].style.zIndex = "15";
+              } else {
+                const slideProgress = (progressWithinCard - 0.3) / 0.7;
+                const translateY = (1 - slideProgress) * 100;
+                cards[i].style.transform = `translateY(${translateY}%)`;
+                cards[i].style.opacity = "1";
+                cards[i].style.visibility = "visible";
+                cards[i].style.zIndex = "15";
+              }
             } else {
               cards[i].style.transform = "translateY(100%)";
               cards[i].style.opacity = "1";
@@ -108,15 +117,8 @@ const ScrollAnimatedStackSections = () => {
             }
           }
         }
-
-        // Release container only after last card fully scrolled
-        if (scrollProgress >= 1) {
-          containerRef.current.style.position = "relative";
-          containerRef.current.style.top = "auto";
-        }
       } else {
         containerRef.current.style.position = "relative";
-        containerRef.current.style.top = "auto";
       }
     };
 
@@ -129,7 +131,7 @@ const ScrollAnimatedStackSections = () => {
   }, [sections.length]);
 
   return (
-    <div ref={sectionRef} className="w-full bg-gray-50 pt-[80px]">
+    <div ref={sectionRef} className="w-full bg-secondary pt-[80px]">
       <div
         ref={containerRef}
         className="w-full h-screen flex flex-col items-center justify-start py-6 px-8"
@@ -141,24 +143,31 @@ const ScrollAnimatedStackSections = () => {
               Latest Projects
             </h1>
             <div className="hidden md:block">
-              <button className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-[#FF5700]">
-                <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
-                <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
-                  see all projects
-                </span>
-                <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
-                  see all projects
-                </span>
-              </button>
+              <div className="hidden md:block">
+                <button className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-[#FF5700]">
+                  {/* Black Overlay (expands from bottom center) */}
+                  <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
+
+                  {/* Initial Text (moves up more on hover) */}
+                  <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
+                    see all projects
+                  </span>
+
+                  {/* New Text (slides in from bottom) */}
+                  <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
+                    see all projects
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Animated cards */}
-        <div className="w-full max-w-7xl flex-grow flex items-end justify-center pb-8">
+        <div className="w-full max-w-full flex-grow flex items-end justify-center pb-8">
           <div
             ref={cardsContainerRef}
-            className="relative h-[65vh] w-full overflow-hidden"
+            className="relative h-[75vh] w-full overflow-visible"
           >
             {sections.map((section, index) => (
               <div
@@ -171,41 +180,47 @@ const ScrollAnimatedStackSections = () => {
                   visibility: index === 0 ? "visible" : "hidden",
                 }}
               >
-                <div className="relative w-full h-[450px] bg-white rounded-3xl overflow-hidden shadow-lg">
-                  <div className="grid grid-cols-2 gap-x-10 h-full relative">
-                    {/* Orange Number Badge */}
-                    <div className="absolute left-1/2 top-8 transform -translate-x-1/2 -translate-y-2 z-20">
-                      <div className="bg-[#FF5722] text-white px-4 py-2 rounded-lg font-bold text-xl min-w-[60px] text-center shadow-lg">
+                <div className="relative w-full h-[600px] bg-transparent overflow-visible">
+                  <div className="flex gap-6 h-full relative">
+                    {/* Orange Number Badge - half outside left panel */}
+                    <div className="absolute left-0 top-8 z-20 transform -translate-x-1/2">
+                      <div className="bg-[#FF5700] text-white px-4 py-3 rounded-lg font-bold text-xl shadow-xl min-w-[60px] text-center">
                         {section.number}
                       </div>
                     </div>
 
-                    {/* Left side */}
-                    <div className="bg-gray-50 px-12 py-16 flex flex-col justify-between relative">
-                      <div className="mt-8">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-800 leading-tight">
+                    {/* Left side - Dark background - 60% width */}
+                    <div
+                      className="group bg-[#f4f3e6] hover:bg-[#2D4A3E] px-10 py-16 flex flex-col justify-between relative rounded-2xl shadow-lg transition-colors duration-300"
+                      style={{ flex: "0 0 60%" }}
+                    >
+                      <div className="mt-16">
+                        <h2 className="text-4xl md:text-5xl font-bold mb-10 leading-tight text-black group-hover:text-white transition-colors duration-300">
                           {section.title}
                         </h2>
+
                         <div className="flex flex-wrap gap-6 mb-12">
                           {section.tags.map((tag, tagIndex) => (
                             <span
                               key={tagIndex}
-                              className="text-gray-500 text-sm font-medium border-b border-gray-300 pb-1 hover:text-gray-700 hover:border-gray-500 transition-colors duration-200 cursor-pointer"
+                              className="text-black text-base font-medium transition-colors duration-200 cursor-pointer group-hover:text-white"
                             >
                               {tag}
                             </span>
                           ))}
                         </div>
                       </div>
-                      <div>
-                        <p className="text-gray-600 text-base leading-relaxed font-normal">
+
+                      <div className="mt-auto">
+                        <p className="text-black text-base leading-relaxed font-normal group-hover:text-white transition-colors duration-300">
                           {section.description}
                         </p>
                       </div>
                     </div>
 
-                    {/* Right side - Image */}
-                    <div className="relative overflow-hidden">
+
+                    {/* Right side - Image - 40% width */}
+                    <div className="relative overflow-hidden rounded-2xl shadow-lg" style={{ flex: '0 0 40%' }}>
                       <img
                         src={section.image}
                         alt={section.title}
