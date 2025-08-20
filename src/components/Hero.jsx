@@ -121,11 +121,12 @@ const Hero = () => {
               connect, and inspire daily.
             </p>
             <div className="flex items-center gap-3 cursor-pointer group">
-              <div className="w-16 h-[2px] bg-orange-500 transition-all duration-300 group-hover:w-20"></div>
-              <span className="text-orange-500 text-lg transition-transform duration-300 group-hover:translate-x-1">
-                →
-              </span>
-            </div>
+  <div className="w-16 h-[2px] bg-tertiary transition-all duration-300 group-hover:w-20"></div>
+  <span className="text-orange-500 text-lg transition-transform duration-300 group-hover:translate-x-2 inline-block">
+    &rarr; {/* HTML entity for right arrow → */}
+  </span>
+</div>
+
           </motion.div>
         </div>
       </div>
@@ -134,14 +135,14 @@ const Hero = () => {
       <div className="w-full mx-auto relative h-[500px] md:h-[600px]">
         {/* First Image */}
         <motion.img
-          src="https://cdn.prod.website-files.com/6864c5e4479c3c44f5272e57/687f53ee528350483ba0d9ee_New%20Project%20(4).jpg"
+          src="Hero1.png"
           alt="modern design house"
           className="w-full rounded-2xl shadow-lg object-cover h-full absolute top-0 left-0"
           style={{ opacity: firstImageOpacity }}
         />
         {/* Second Image */}
         <motion.img
-          src="https://cdn.prod.website-files.com/6864c5e4479c3c44f5272e57/687ed68a01bb71637a16207c_New%20Project%20(4).jpg"
+          src="Hero2.png"
           alt="modern design house 2"
           className="w-full rounded-2xl shadow-lg object-cover h-full absolute top-0 left-0"
           style={{ opacity: secondImageOpacity }}

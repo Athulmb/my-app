@@ -64,7 +64,7 @@ const Navbar = () => {
                         {/* Dropdown */}
                         {/* Dropdown */}
                         <div
-                            className={`absolute left-0 top-full mt-2 w-[500px] h-[300px] bg-gray-100 text-gray-800 rounded-xl shadow-xl z-50 
+                            className={`absolute left-0 top-full mt-2 w-[500px] h-[300px] bg-secondary text-gray-800 rounded-xl shadow-xl z-50 
     transform transition-all duration-500 ease-out
     ${dropdownOpen ? "opacity-100 translate-y-0 visible" : "opacity-0 translate-y-6 invisible"}`}
                         >
@@ -139,13 +139,13 @@ const Navbar = () => {
                 <div className="md:hidden mt-4 bg-slate-600 rounded-md px-2 py-2 mx-2">
                     <a
                         href="#"
-                        className="text-orange-400 hover:text-orange-300 font-medium px-4 py-2 bg-slate-700/50 rounded-md mr-2"
+                        className="text-teal-400 hover:text-primary  font-medium px-4 py-2  rounded-md mr-2 mb-2 block hover:bg-slate-500"
                     >
                         Home
                     </a>
                     <button
                         onClick={() => setDropdownOpen(!dropdownOpen)}
-                        className="w-full text-left px-3 py-2 text-white hover:text-orange-500 font-medium hover:bg-slate-500 rounded-md flex justify-between items-center transition duration-200"
+                        className="w-full text-left px-3 py-2 text-white hover:text-primaryfont-medium hover:bg-slate-500 rounded-md flex justify-between items-center transition duration-200 mt-3"
                     >
                         Pages{" "}
                         <ChevronDown
@@ -157,19 +157,19 @@ const Navbar = () => {
                         <div className="pl-6 space-y-1 mt-1">
                             <a
                                 href="#"
-                                className="block px-3 py-2 text-gray-300 hover:text-orange-500 rounded-md transition duration-300"
+                                className="block px-3 py-2 text-white hover:text-primary rounded-md transition duration-300"
                             >
                                 Page 1
                             </a>
                             <a
                                 href="#"
-                                className="block px-3 py-2 text-gray-300 hover:text-orange-500 rounded-md transition duration-300"
+                                className="block px-3 py-2 text-white hover:text-primary rounded-md transition duration-300"
                             >
                                 Page 2
                             </a>
                             <a
                                 href="#"
-                                className="block px-3 py-2 text-gray-300 hover:text-orange-500 rounded-md transition duration-300"
+                                className="block px-3 py-2 text-white hover:text-primary rounded-md transition duration-300"
                             >
                                 Page 3
                             </a>
@@ -177,19 +177,19 @@ const Navbar = () => {
                     )}
                     <a
                         href="#"
-                        className="block px-3 py-2 text-white hover:text-orange-500 font-medium hover:bg-slate-500 rounded-md transition duration-300"
+                        className="block px-3 py-2 text-white hover:text-primary hover:bg-slate-500 rounded-md transition duration-300"
                     >
                         Blog
                     </a>
                     <a
                         href="#"
-                        className="block px-3 py-2 text-white hover:text-orange-500 font-medium hover:bg-slate-500 rounded-md transition duration-300"
+                        className="block px-3 py-2 text-white hover:text-primary font-medium hover:bg-slate-500 rounded-md transition duration-300"
                     >
                         About
                     </a>
                     <a
                         href="#"
-                        className="block px-3 py-2 text-white hover:text-orange-500 font-medium hover:bg-slate-500 rounded-md transition duration-300"
+                        className="block px-3 py-2 text-white hover:text-primary font-medium hover:bg-slate-500 rounded-md transition duration-300"
                     >
                         Projects
                     </a>
@@ -199,7 +199,7 @@ const Navbar = () => {
             {/* Mobile CTA */}
             {isOpen && (
                 <div className="md:hidden px-2 mt-2">
-                    <button className="w-full bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded-md font-medium transition-colors duration-200">
+                    <button className="w-full bg-teal-400 hover:bg-primary  text-white px-3 py-2 rounded-md font-medium transition-colors duration-200">
                         Get Started
                     </button>
                 </div>

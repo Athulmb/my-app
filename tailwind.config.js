@@ -8,6 +8,8 @@ module.exports = {
       colors: {
         primary: '#00998d',
         button: '#009072',
+        secondary: '#fdfcf0',
+        tertiary: '#006b31', 
       },
       fontFamily: {
         sans: ["Manrope", "sans-serif"], // ✅ Manrope is now the default
