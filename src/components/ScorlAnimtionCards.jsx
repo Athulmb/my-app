@@ -134,31 +134,24 @@ const ScrollAnimatedStackSections = () => {
     <div ref={sectionRef} className="w-full bg-secondary pt-[80px]">
       <div
         ref={containerRef}
-        className="w-full h-screen flex flex-col items-center justify-start py-6 px-8"
+        className="w-full h-screen flex flex-col items-center justify-start py-6 px-4 sm:px-6 lg:px-8"
       >
         {/* Header */}
         <div className="w-full max-w-7xl text-left mb-6">
-          <div className="flex justify-between items-center">
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-800 tracking-tight">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-gray-800 tracking-tight">
               Latest Projects
             </h1>
             <div className="hidden md:block">
-              <div className="hidden md:block">
-                <button className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-button">
-                  {/* Black Overlay (expands from bottom center) */}
-                  <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
-
-                  {/* Initial Text (moves up more on hover) */}
-                  <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
-                    see all projects
-                  </span>
-
-                  {/* New Text (slides in from bottom) */}
-                  <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
-                    see all projects
-                  </span>
-                </button>
-              </div>
+              <button className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-button">
+                <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
+                <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
+                  see all projects
+                </span>
+                <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
+                  see all projects
+                </span>
+              </button>
             </div>
           </div>
         </div>
@@ -180,30 +173,29 @@ const ScrollAnimatedStackSections = () => {
                   visibility: index === 0 ? "visible" : "hidden",
                 }}
               >
-                <div className="relative w-full h-[600px] bg-transparent overflow-visible">
-                  <div className="flex gap-6 h-full relative">
-                    {/* Orange Number Badge - half outside left panel */}
-                    <div className="absolute left-0 top-8 z-20 transform -translate-x-1/2">
-                      <div className="bg-button text-white px-4 py-3 rounded-lg font-bold text-xl shadow-xl min-w-[60px] text-center">
+                <div className="relative w-full h-auto md:h-[600px] bg-transparent overflow-visible">
+                  <div className="flex flex-col lg:flex-row gap-6 h-full relative">
+                    {/* Orange Number Badge */}
+                    <div className="absolute left-4 top-4 lg:left-0 lg:top-8 z-20 transform lg:-translate-x-1/2">
+                      <div className="bg-button text-white px-4 py-3 rounded-lg font-bold text-lg md:text-xl shadow-xl min-w-[50px] md:min-w-[60px] text-center">
                         {section.number}
                       </div>
                     </div>
 
-                    {/* Left side - Dark background - 60% width */}
+                    {/* Left side - Text */}
                     <div
-                      className="group bg-[#f4f3e6] hover:bg-[#2D4A3E] px-10 py-16 flex flex-col justify-between relative rounded-2xl shadow-lg transition-colors duration-300"
-                      style={{ flex: "0 0 60%" }}
+                      className="group bg-[#f4f3e6] hover:bg-[#2D4A3E] px-6 sm:px-8 md:px-10 py-10 flex flex-col justify-between relative rounded-2xl shadow-lg transition-colors duration-300 flex-1"
                     >
-                      <div className="mt-16">
-                        <h2 className="text-4xl md:text-5xl font-bold mb-10 leading-tight text-black group-hover:text-white transition-colors duration-300">
+                      <div className="mt-12">
+                        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight text-black group-hover:text-white transition-colors duration-300">
                           {section.title}
                         </h2>
 
-                        <div className="flex flex-wrap gap-6 mb-12">
+                        <div className="flex flex-wrap gap-4 md:gap-6 mb-8">
                           {section.tags.map((tag, tagIndex) => (
                             <span
                               key={tagIndex}
-                              className="text-black text-base font-medium transition-colors duration-200 cursor-pointer group-hover:text-white"
+                              className="text-sm sm:text-base md:text-lg text-black font-medium transition-colors duration-200 cursor-pointer group-hover:text-white"
                             >
                               {tag}
                             </span>
@@ -212,15 +204,14 @@ const ScrollAnimatedStackSections = () => {
                       </div>
 
                       <div className="mt-auto">
-                        <p className="text-black text-base leading-relaxed font-normal group-hover:text-white transition-colors duration-300">
+                        <p className="text-sm sm:text-base md:text-lg text-black leading-relaxed font-normal group-hover:text-white transition-colors duration-300">
                           {section.description}
                         </p>
                       </div>
                     </div>
 
-
-                    {/* Right side - Image - 40% width */}
-                    <div className="relative overflow-hidden rounded-2xl shadow-lg" style={{ flex: '0 0 40%' }}>
+                    {/* Right side - Image */}
+                    <div className="relative overflow-hidden rounded-2xl shadow-lg flex-1 h-64 sm:h-80 md:h-full">
                       <img
                         src={section.image}
                         alt={section.title}

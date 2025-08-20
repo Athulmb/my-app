@@ -122,8 +122,8 @@ const Hero = () => {
               connect, and inspire daily.
             </p>
             <div className="flex items-center gap-3 cursor-pointer group">
-  <div className="w-16 h-[2px] bg-tertiary transition-all duration-300 group-hover:w-20"></div>
-  <span className="text-orange-500 text-lg transition-transform duration-300 group-hover:translate-x-2 inline-block">
+  <div className="w-16 h-[3px] bg-button transition-all duration-300 group-hover:w-20"></div>
+  <span className="text-button text-4xl transition-transform duration-300 group-hover:translate-x-2 inline-block">
     &rarr; {/* HTML entity for right arrow → */}
   </span>
 </div>

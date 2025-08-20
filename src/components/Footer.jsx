@@ -46,16 +46,16 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#F9F8F3] py-16 px-6 md:px-12">
-      <div className="max-w-8xl mx-auto">
+    <footer className="bg-[#F9F8F3] py-10 px-4 sm:px-6 md:px-8">
+      <div className="max-w-7xl mx-auto">
         {/* Top Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-start mb-16 gap-12">
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-10 lg:gap-16 mb-12">
           {/* Logo */}
           <div className="flex items-center">
             {logoLetters.map((item, index) => (
               <span
                 key={index}
-                className={`text-7xl md:text-8xl font-bold ${item.color} inline-block transform transition-all duration-700 ease-out ${
+                className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold ${item.color} inline-block transform transition-all duration-700 ease-out ${
                   animateLetters 
                     ? 'translate-y-0 opacity-100 rotate-0' 
                     : 'translate-y-8 opacity-0 rotate-12'
@@ -71,49 +71,46 @@ const Footer = () => {
           </div>
 
           {/* Newsletter Signup */}
-          <div className="lg:w-1/2">
-            <h3 className="text-2xl md:text-3xl font-semibold text-[#24342E] mb-4 animate-fadeInUp">
+          <div className="w-full lg:w-1/2">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#24342E] mb-3">
               Sign up for our newsletter
             </h3>
-            <p className="text-[#24342E]/70 mb-6 max-w-md animate-fadeInUp animation-delay-200">
+            <p className="text-sm sm:text-base text-[#24342E]/70 mb-5 max-w-md">
               Stay updated with the latest projects, design tips, and insights—delivered straight to your inbox.
             </p>
-            <div className="flex gap-3 animate-fadeInUp animation-delay-400">
+            <div className="flex flex-col sm:flex-row gap-3">
               <input
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-2 py-2 border-b border-[#24342E] bg-transparent text-[#24342E] placeholder-gray-500 focus:border-button outline-none transition-colors duration-300"
+                className="flex-1 px-2 py-2 border-b border-[#24342E] bg-transparent text-[#24342E] placeholder-gray-500 focus:border-button outline-none transition-colors duration-300 text-sm sm:text-base"
               />
-             <button                  onClick={handleSubmit}
-              className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-button">
-                  {/* Black Overlay (expands from bottom center) */}
-                  <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
-
-                  {/* Initial Text (moves up more on hover) */}
-                  <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
-                    see all projects
-                  </span>
-
-                  {/* New Text (slides in from bottom) */}
-                  <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
-                    see all projects
-                  </span>
-                </button>
+              <button
+                onClick={handleSubmit}
+                className="relative overflow-hidden px-4 sm:px-6 py-2 rounded-md font-medium group bg-button text-sm sm:text-base"
+              >
+                <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
+                <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
+                  Subscribe
+                </span>
+                <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
+                  Subscribe
+                </span>
+              </button>
             </div>
           </div>
         </div>
 
         {/* Navigation Links */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 bg-[#F2F0E9] p-8 rounded-lg mb-16">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10 bg-[#F2F0E9] p-6 sm:p-8 rounded-lg mb-12 text-sm sm:text-base">
           {/* Primary Navigation */}
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {navigationLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.href}
-                className={`block text-base ${
+                className={`block ${
                   link.active 
                     ? 'text-button font-medium' 
                     : 'text-[#24342E] hover:text-button'
@@ -125,12 +122,12 @@ const Footer = () => {
           </div>
 
           {/* Secondary Navigation */}
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {secondaryLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.href}
-                className="block text-base text-[#24342E] hover:text-button"
+                className="block text-[#24342E] hover:text-button"
               >
                 {link.title}
               </a>
@@ -138,12 +135,12 @@ const Footer = () => {
           </div>
 
           {/* Legal Links */}
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {legalLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.href}
-                className="block text-base text-[#24342E] hover:text-button"
+                className="block text-[#24342E] hover:text-button"
               >
                 {link.title}
               </a>
@@ -152,31 +149,27 @@ const Footer = () => {
         </div>
 
         {/* Social Media + Copyright */}
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
-          <div className="text-[#24342E]/70 animate-fadeInUp">
-            Copyright 2025 . All rights reserved.
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm sm:text-base">
+          <div className="text-[#24342E]/70">
+            © 2025 . All rights reserved.
           </div>
           
-          <div className="flex items-center gap-8">
-            {/* Social Icons */}
-            <div className="flex items-center gap-6">
-              {[
-                { icon: Facebook, href: '#' },
-                { icon: Instagram, href: '#' },
-                { icon: Linkedin, href: '#' },
-                { icon: Twitter, href: '#' }
-              ].map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="w-16 h-16 bg-[#F2F0E9] rounded-lg flex items-center justify-center text-[#24342E] hover:text-button transition-all duration-300"
-                >
-                  <social.icon size={24} />
-                </a>
-              ))}
-            </div>
-
-            
+          {/* Social Icons */}
+          <div className="flex items-center gap-4 sm:gap-6">
+            {[
+              { icon: Facebook, href: '#' },
+              { icon: Instagram, href: '#' },
+              { icon: Linkedin, href: '#' },
+              { icon: Twitter, href: '#' }
+            ].map((social, index) => (
+              <a
+                key={index}
+                href={social.href}
+                className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[#F2F0E9] rounded-lg flex items-center justify-center text-[#24342E] hover:text-button transition-all duration-300"
+              >
+                <social.icon size={20} className="sm:size-22 md:size-24" />
+              </a>
+            ))}
           </div>
         </div>
       </div>
@@ -185,5 +178,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
