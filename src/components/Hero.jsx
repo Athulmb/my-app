@@ -63,7 +63,7 @@ const Hero = () => {
         <div className="w-full lg:w-1/2">
           <div className="relative mb-8">
             <div className="w-28 h-[4px] bg-button "></div>
-            <p className="text-sm text-black/90 leading-relaxed">
+            <p className="text-sm text-black/90 leading-relaxed pt-3">
               Delivering innovative trading and manufacturing solutions with excellence,
               safety, and sustainability.            </p>
           </div>
@@ -104,50 +104,50 @@ const Hero = () => {
             </button>
           </motion.div>
           {/* Right Text Section */}
-         {/* Right Text Section */}
-<motion.div
-  className="flex-1 justify-end pt-8 lg:pt-16 order-2 lg:order-2 relative flex flex-col items-start gap-6"
-  initial={{ x: 50, opacity: 0 }}
-  animate={{ x: 0, opacity: 1 }}
-  transition={{ duration: 0.8, delay: 0.5 }}
->
-  {/* 🔹 GIF Card */}
-  <motion.div
-    className="bg-black/10 w-full lg:w-[280px] rounded-xl p-4 shadow-lg border border-white/5"
-    initial={{ opacity: 0, scale: 0.9 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.6, delay: 0.2 }}
-  >
-    <img
-      src="/CityBuild.gif"
-      alt="city build animation"
-      className="w-full h-32 object-cover rounded-lg"
-    />
-  </motion.div>
+          {/* Right Text Section */}
+          <motion.div
+            className="flex-1 justify-end pt-8 lg:pt-16 order-2 lg:order-2 relative flex flex-col items-start gap-6"
+            initial={{ x: 50, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            {/* 🔹 GIF Card */}
+            <motion.div
+              className="bg-black/10 w-full lg:w-[280px] rounded-xl p-4 shadow-lg border border-white/5"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <img
+                src="/CityBuild.gif"
+                alt="city build animation"
+                className="w-full h-32 object-cover rounded-lg"
+              />
+            </motion.div>
 
-  <h2 className="text-2xl md:text-3xl font-bold leading-tight">
-    Building industries, <br />
-    powering growth.
-  </h2>
-  <p className="text-gray-800 text-sm leading-relaxed">
-    Building sustainable futures with advanced trade solutions.
-  </p>
+            <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+              Building industries, <br />
+              powering growth.
+            </h2>
+            <p className="text-gray-800 text-sm leading-relaxed">
+              Building sustainable futures with advanced trade solutions.
+            </p>
 
-  {/* 🔹 Arrow */}
-  <motion.div className="flex items-center gap-3 cursor-pointer">
-    <motion.img
-      src="/arrow.svg"
-      alt="arrow"
-      className="h-8 w-auto origin-left"
-      whileHover={{ scaleX: 1.5 }}
-      transition={{
-        type: "spring",
-        stiffness: 300,
-        damping: 10,
-      }}
-    />
-  </motion.div>
-</motion.div>
+            {/* 🔹 Arrow */}
+            <motion.div className="flex items-center gap-3 cursor-pointer">
+              <motion.img
+                src="/arrow.svg"
+                alt="arrow"
+                className="h-8 w-auto origin-left"
+                whileHover={{ scaleX: 1.5 }}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 10,
+                }}
+              />
+            </motion.div>
+          </motion.div>
 
 
 

@@ -33,10 +33,10 @@ const Navbar = () => {
         <nav
             className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-500
         ${showNavbar ? "translate-y-0" : "-translate-y-full"} 
-        ${scrolled ? "bg-button/50 shadow-md" : "bg-transparent"}
+        ${scrolled ? "bg-button/10 shadow-md" : "bg-transparent"}
       `}
         >
-            <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-20 py-4">
+            <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-20 py-2">
                 {/* Logo */}
                 {/* Logo */}
                 <div className="flex flex-col items-start">
@@ -48,9 +48,9 @@ const Navbar = () => {
                     />
 
                     {/* Subtitle */}
-                    {/* <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mt-1">
+                    <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 ">
     Training and Manufacturing Group
-  </div> */}
+  </div>
                 </div>
 
 
