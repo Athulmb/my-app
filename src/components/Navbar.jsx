@@ -138,83 +138,81 @@ const Navbar = () => {
                 <div className="md:hidden">
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="text-white hover:text-gray-300"
+                        className="text-black hover:text-background"
                     >
                         {isOpen ? <X size={24} /> : <Menu size={24} />}
                     </button>
                 </div>
             </div>
 
-            {/* Mobile Menu */}
-            {isOpen && (
-                <div className="md:hidden mt-4 bg-slate-600 rounded-md px-2 py-2 mx-2">
-                    <a
-                        href="#"
-                        className="text-teal-400 hover:text-primary  font-medium px-4 py-2  rounded-md mr-2 mb-2 block hover:bg-slate-500"
-                    >
-                        Home
-                    </a>
-                    <button
-                        onClick={() => setDropdownOpen(!dropdownOpen)}
-                        className="w-full text-left px-3 py-2 text-white hover:text-primaryfont-medium hover:bg-slate-500 rounded-md flex justify-between items-center transition duration-200 mt-3"
-                    >
-                        Pages{" "}
-                        <ChevronDown
-                            className={`w-4 h-4 transform transition-transform duration-300 ${dropdownOpen ? "rotate-180" : "rotate-0"
-                                }`}
-                        />
-                    </button>
-                    {dropdownOpen && (
-                        <div className="pl-6 space-y-1 mt-1">
-                            <a
-                                href="#"
-                                className="block px-3 py-2 text-white hover:text-primary rounded-md transition duration-300"
-                            >
-                                Page 1
-                            </a>
-                            <a
-                                href="#"
-                                className="block px-3 py-2 text-white hover:text-primary rounded-md transition duration-300"
-                            >
-                                Page 2
-                            </a>
-                            <a
-                                href="#"
-                                className="block px-3 py-2 text-white hover:text-primary rounded-md transition duration-300"
-                            >
-                                Page 3
-                            </a>
-                        </div>
-                    )}
-                    <a
-                        href="#"
-                        className="block px-3 py-2 text-white hover:text-primary hover:bg-slate-500 rounded-md transition duration-300"
-                    >
-                        Blog
-                    </a>
-                    <a
-                        href="#"
-                        className="block px-3 py-2 text-white hover:text-primary font-medium hover:bg-slate-500 rounded-md transition duration-300"
-                    >
-                        About
-                    </a>
-                    <a
-                        href="#"
-                        className="block px-3 py-2 text-white hover:text-primary font-medium hover:bg-slate-500 rounded-md transition duration-300"
-                    >
-                        Projects
-                    </a>
-                </div>
-            )}
+           {/* Mobile Menu */}
+{isOpen && (
+  <div className="md:hidden mt-4 bg-[#636363] rounded-md px-2 py-2 mx-2">
+    <a
+      href="#"
+      className="text-white hover:text-light font-medium px-4 py-2 rounded-md mr-2 mb-2 block hover:bg-[#4f4f4f] transition duration-300"
+    >
+      Home
+    </a>
 
-            {/* Mobile CTA */}
-            {isOpen && (
-                <div className="md:hidden px-2 mt-2">
-                    <button className="w-full bg-teal-400 hover:bg-primary  text-white px-3 py-2 rounded-md font-medium transition-colors duration-200">
-                        Get Started
-                    </button>
-                </div>
-            )}
+    <button
+      onClick={() => setDropdownOpen(!dropdownOpen)}
+      className="w-full text-left px-3 py-2 text-white font-medium hover:text-light hover:bg-[#4f4f4f] rounded-md flex justify-between items-center transition duration-300 mt-3"
+    >
+      Projects{" "}
+      <ChevronDown
+        className={`w-4 h-4 transform transition-transform duration-300 ${
+          dropdownOpen ? "rotate-180" : "rotate-0"
+        }`}
+      />
+    </button>
+    {dropdownOpen && (
+      <div className="pl-6 space-y-1 mt-1">
+        <a
+          href="#"
+          className="block px-3 py-2 text-white hover:text-light rounded-md transition duration-300"
+        >
+          Project 1
+        </a>
+        <a
+          href="#"
+          className="block px-3 py-2 text-white hover:text-light rounded-md transition duration-300"
+        >
+          Project 2
+        </a>
+        <a
+          href="#"
+          className="block px-3 py-2 text-white hover:text-light rounded-md transition duration-300"
+        >
+          Project 3
+        </a>
+      </div>
+    )}
+
+    <a
+      href="#"
+      className="block px-3 py-2 text-white hover:text-light rounded-md transition duration-300"
+    >
+      Blog
+    </a>
+    <a
+      href="#"
+      className="block px-3 py-2 text-white hover:text-light rounded-md transition duration-300"
+    >
+      About
+    </a>
+  </div>
+)}
+
+{/* Mobile CTA */}
+{isOpen && (
+  <div className="md:hidden px-2 mt-2">
+    <button className="w-full bg-button hover:bg-light text-white px-3 py-2 rounded-md font-medium transition-colors duration-200">
+      Get Started
+    </button>
+  </div>
+)}
+
         </nav>
     );
 };
