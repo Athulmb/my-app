@@ -11,10 +11,10 @@ const Footer = () => {
 
   // Logo letters
   const logoLetters = [
-    { letter: 'G', color: 'text-[#24342E]' },
-    { letter: 'U', color: 'text-[#24342E]' },
+    { letter: 'G', color: 'text-background' },
+    { letter: 'U', color: 'text-background' },
     { letter: 'L', color: 'text-button' },
-    { letter: 'F', color: 'text-[#24342E]' },
+    { letter: 'F', color: 'text-background' },
   ];
 
   const navigationLinks = [
@@ -47,7 +47,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-[#F9F8F3] py-10 px-4 sm:px-6 md:px-8">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-full mx-auto">
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-10 lg:gap-16 mb-12">
           {/* Logo */}

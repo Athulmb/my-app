@@ -13,7 +13,7 @@ const faqs = [
 
 const FAQSection = () => {
   return (
-    <div className="bg-[#132c28] text-white min-h-screen flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-8 sm:py-12 md:py-16">
+    <div className="bg-background text-white min-h-screen flex flex-col px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 py-8 sm:py-12 md:py-16">
       {/* Heading */}
       <motion.h2
         className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center leading-tight mb-8 sm:mb-10 md:mb-12 w-full mx-auto"

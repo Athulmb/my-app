@@ -82,7 +82,7 @@ const StatItem = ({ number, prefix = "", suffix = "+", title, description, delay
 
 // Stats Card
 const StatsCard = () => (
-  <div className="bg-[#1F2E2B] text-white rounded-lg p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 md:space-y-8 w-full sm:w-[300px] md:w-[350px] lg:w-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] flex flex-col justify-center">
+  <div className="bg-background text-white rounded-lg p-4 sm:p-6 md:p-6 space-y-2 sm:space-y-6 md:space-y-8 w-full sm:w-[300px] md:w-[350px] lg:w-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] flex flex-col justify-center gap-4">
     <StatItem
       number={320}
       title="Employees"

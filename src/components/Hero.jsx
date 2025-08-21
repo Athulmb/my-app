@@ -103,30 +103,54 @@ const Hero = () => {
               </span>
             </button>
           </motion.div>
-
-
           {/* Right Text Section */}
-          <motion.div
-            className="flex-1 justify-end pt-8 lg:pt-16 order-2 lg:order-2"
-            initial={{ x: 50, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
-              Building industries, <br />
-              powering growth.
-            </h2>
-            <p className="text-gray-800 text-sm mb-8 leading-relaxed">
-              Building sustainable futures with advanced trade solutions.
-            </p>
-            <div className="flex items-center gap-3 cursor-pointer group">
-              <div className="w-16 h-[3px] bg-button transition-all duration-300 group-hover:w-20"></div>
-              <span className="text-button text-4xl transition-transform duration-300 group-hover:translate-x-2 inline-block">
-                &rarr; {/* HTML entity for right arrow → */}
-              </span>
-            </div>
+         {/* Right Text Section */}
+<motion.div
+  className="flex-1 justify-end pt-8 lg:pt-16 order-2 lg:order-2 relative flex flex-col items-start gap-6"
+  initial={{ x: 50, opacity: 0 }}
+  animate={{ x: 0, opacity: 1 }}
+  transition={{ duration: 0.8, delay: 0.5 }}
+>
+  {/* 🔹 GIF Card */}
+  <motion.div
+    className="bg-black/10 w-full lg:w-[280px] rounded-xl p-4 shadow-lg border border-white/5"
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.6, delay: 0.2 }}
+  >
+    <img
+      src="/CityBuild.gif"
+      alt="city build animation"
+      className="w-full h-32 object-cover rounded-lg"
+    />
+  </motion.div>
 
-          </motion.div>
+  <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+    Building industries, <br />
+    powering growth.
+  </h2>
+  <p className="text-gray-800 text-sm leading-relaxed">
+    Building sustainable futures with advanced trade solutions.
+  </p>
+
+  {/* 🔹 Arrow */}
+  <motion.div className="flex items-center gap-3 cursor-pointer">
+    <motion.img
+      src="/arrow.svg"
+      alt="arrow"
+      className="h-8 w-auto origin-left"
+      whileHover={{ scaleX: 1.5 }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 10,
+      }}
+    />
+  </motion.div>
+</motion.div>
+
+
+
         </div>
       </div>
 
