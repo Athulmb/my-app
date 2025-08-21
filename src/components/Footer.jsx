@@ -55,7 +55,7 @@ const Footer = () => {
             {logoLetters.map((item, index) => (
               <span
                 key={index}
-                className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold ${item.color} inline-block transform transition-all duration-700 ease-out ${
+                className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold ${item.color} inline-block transform transition-all duration-700 ease-out ${
                   animateLetters 
                     ? 'translate-y-0 opacity-100 rotate-0' 
                     : 'translate-y-8 opacity-0 rotate-12'

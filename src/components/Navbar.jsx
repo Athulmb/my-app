@@ -48,7 +48,7 @@ const Navbar = () => {
                     />
 
                     {/* Subtitle */}
-                    <div className="text-sm sm:text-base md:text-lg lg:text-xl text-[#636363] ">
+                    <div className="text-sm sm:text-base md:text-sm lg:text-md text-[#636363] ">
     Training and Manufacturing Group
   </div>
                 </div>

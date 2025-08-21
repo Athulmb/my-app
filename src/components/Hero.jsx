@@ -94,7 +94,7 @@ const Hero = () => {
 
             {/* Animated Button */}
             <button className="relative overflow-hidden px-5 py-3 w-full rounded-md font-medium group bg-button">
-              <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black/40 rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
               <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
                 Read More
               </span>
