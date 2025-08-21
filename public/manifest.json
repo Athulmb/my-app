@@ -1,9 +1,10 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GULF",
+  "name": "GULF - Global Unified Logistics Framework",
+  "description": "A comprehensive platform for global logistics management.",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "logo.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },

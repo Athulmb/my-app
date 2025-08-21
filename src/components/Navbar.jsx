@@ -33,7 +33,7 @@ const Navbar = () => {
         <nav
             className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-500
         ${showNavbar ? "translate-y-0" : "-translate-y-full"} 
-        ${scrolled ? "bg-button/10 shadow-md" : "bg-transparent"}
+        ${scrolled ? "bg-[#eaeaea] shadow-md" : "bg-transparent"}
       `}
         >
             <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-20 py-2">
@@ -48,17 +48,17 @@ const Navbar = () => {
                     />
 
                     {/* Subtitle */}
-                    <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 ">
+                    <div className="text-sm sm:text-base md:text-lg lg:text-xl text-[#636363] ">
     Training and Manufacturing Group
   </div>
                 </div>
 
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center bg-slate-600/30 rounded-md px-2 py-1 space-x-2">
+                <div className="hidden md:flex items-center bg-[#636363] rounded-md px-2 py-1 space-x-2">
                     <a
                         href="#"
-                        className="text-button hover:text-light font-medium px-4 py-2 bg-slate-700/30 rounded-md mr-2"
+                        className="text-button hover:text-light font-medium px-4 py-2 bg-[#636363] rounded-md mr-2"
                     >
                         Home
                     </a>
@@ -69,7 +69,7 @@ const Navbar = () => {
                         onMouseEnter={() => setDropdownOpen(true)}
                         onMouseLeave={() => setDropdownOpen(false)}
                     >
-                        <button className="flex items-center px-4 py-2 font-medium text-white rounded-md hover:text-light hover:bg-slate-700 transition duration-300">
+                        <button className="flex items-center px-4 py-2 font-medium text-white rounded-md hover:text-light transition duration-300">
                             Projects{" "}
                             <ChevronDown
                                 className={`ml-1 w-4 h-4 transform transition-transform duration-500 ${dropdownOpen ? "rotate-180" : "rotate-0"
@@ -108,13 +108,13 @@ const Navbar = () => {
 
                     <a
                         href="#"
-                        className="px-4 py-2 font-medium rounded-md text-white hover:text-light hover:bg-slate-700 transition duration-300"
+                        className="px-4 py-2 font-medium rounded-md text-white hover:text-light  transition duration-300"
                     >
                         Blog
                     </a>
                     <a
                         href="#"
-                        className="px-4 py-2 font-medium rounded-md text-white hover:text-light hover:bg-slate-700 transition duration-300"
+                        className="px-4 py-2 font-medium rounded-md text-white hover:text-light hover:bg-[#636363] transition duration-300"
                     >
                         About
                     </a>
