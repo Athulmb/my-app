@@ -10,6 +10,7 @@ module.exports = {
         button: '#961c1f',
         secondary: '#fdfcf0',
         tertiary: '#006b31', 
+        light: '#ed1c24',
       },
       fontFamily: {
         sans: ["Manrope", "sans-serif"], // ✅ Manrope is now the default

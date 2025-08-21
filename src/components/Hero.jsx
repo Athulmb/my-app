@@ -56,14 +56,14 @@ const Hero = () => {
   const secondImageOpacity = useTransform(scrollY, [0, 300], [0, 1]);
 
   return (
-    <div className="bg-primary text-white min-h-screen flex flex-col px-6 md:px-20 py-[100px]">
+    <div className="bg-secondary text-black min-h-screen flex flex-col px-6 md:px-20 py-[100px]">
       {/* Header Section */}
       <div className="w-full mx-auto flex flex-col lg:flex-row items-start justify-between gap-8 mb-12 mt-[100px]">
         {/* Left Text Section */}
         <div className="w-full lg:w-1/2">
           <div className="relative mb-8">
             <div className="w-28 h-[4px] bg-button "></div>
-            <p className="text-sm text-gray-300 leading-relaxed">
+            <p className="text-sm text-black/90 leading-relaxed">
               Reimagining bioprocess safety with elegant design and top-tier<br />
               viral clearance.
             </p>
@@ -116,7 +116,7 @@ const Hero = () => {
               Architecture is what we<br />
               live and breathe
             </h2>
-            <p className="text-gray-300 text-sm mb-8 leading-relaxed">
+            <p className="text-gray-800 text-sm mb-8 leading-relaxed">
               Designing purposeful spaces with passion,<br />
               architecture shapes how we live, move,<br />
               connect, and inspire daily.

@@ -48,7 +48,7 @@ const Navbar = () => {
   />
 
   {/* Subtitle */}
-  <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 mt-1">
+  <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mt-1">
     Training and Manufacturing Group
   </div>
 </div>
@@ -58,7 +58,7 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center bg-slate-600 rounded-md px-2 py-1 space-x-2">
                     <a
                         href="#"
-                        className="text-teal-400 hover:text-primary font-medium px-4 py-2 bg-slate-700/50 rounded-md mr-2"
+                        className="text-button hover:text-light font-medium px-4 py-2 bg-slate-700/50 rounded-md mr-2"
                     >
                         Home
                     </a>
@@ -69,7 +69,7 @@ const Navbar = () => {
                         onMouseEnter={() => setDropdownOpen(true)}
                         onMouseLeave={() => setDropdownOpen(false)}
                     >
-                        <button className="flex items-center px-4 py-2 font-medium text-white rounded-md hover:text-primary hover:bg-slate-700 transition duration-300">
+                        <button className="flex items-center px-4 py-2 font-medium text-white rounded-md hover:text-light hover:bg-slate-700 transition duration-300">
                             Projects{" "}
                             <ChevronDown
                                 className={`ml-1 w-4 h-4 transform transition-transform duration-500 ${dropdownOpen ? "rotate-180" : "rotate-0"
@@ -86,19 +86,19 @@ const Navbar = () => {
                         >
                             <a
                                 href="#"
-                                className="block px-6 py-4 text-lg hover:bg-gray-200 hover:text-orange-600 rounded-t-md transition duration-300"
+                                className="block px-6 py-4 text-lg hover:bg-gray-200 hover:text-button rounded-t-md transition duration-300"
                             >
                                Project 1
                             </a>
                             <a
                                 href="#"
-                                className="block px-6 py-4 text-lg hover:bg-gray-200 hover:text-orange-600 transition duration-300"
+                                className="block px-6 py-4 text-lg hover:bg-gray-200 hover:text-button transition duration-300"
                             >
                                 Project 2
                             </a>
                             <a
                                 href="#"
-                                className="block px-6 py-4 text-lg hover:bg-gray-200 hover:text-orange-600 rounded-b-md transition duration-300"
+                                className="block px-6 py-4 text-lg hover:bg-gray-200 hover:text-button rounded-b-md transition duration-300"
                             >
                                 Project 3
                             </a>
@@ -108,19 +108,19 @@ const Navbar = () => {
 
                     <a
                         href="#"
-                        className="px-4 py-2 font-medium rounded-md text-white hover:text-primary hover:bg-slate-700 transition duration-300"
+                        className="px-4 py-2 font-medium rounded-md text-white hover:text-light hover:bg-slate-700 transition duration-300"
                     >
                         Blog
                     </a>
                     <a
                         href="#"
-                        className="px-4 py-2 font-medium rounded-md text-white hover:text-primary hover:bg-slate-700 transition duration-300"
+                        className="px-4 py-2 font-medium rounded-md text-white hover:text-light hover:bg-slate-700 transition duration-300"
                     >
                         About
                     </a>
                     <a
                         href="#"
-                        className="px-4 py-2 font-medium rounded-md text-white hover:text-primary hover:bg-slate-700 transition duration-300"
+                        className="px-4 py-2 font-medium rounded-md text-white hover:text-light hover:bg-slate-700 transition duration-300"
                     >
                         Projects
                     </a>
