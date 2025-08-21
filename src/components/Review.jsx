@@ -4,31 +4,35 @@ import { motion, AnimatePresence } from "framer-motion";
 const reviews = [
   {
     id: 1,
-    name: "James Miller",
-    role: "Creative Director",
-    text: "Planova has been a game-changer for my home. Their ability to blend functionality with exquisite design is unparalleled...",
-    img: "https://randomuser.me/api/portraits/men/32.jpg",
+    name: "Thomas R.",
+    role: "Mining Operations Manager",
+    text: "Working with GULF turned our supply chain vision into reality. The team provided efficient sourcing and delivery that enhanced our operations.",
+    img: "https://randomuser.me/api/portraits/men/45.jpg", // stock mining executive photo
+    rating: 5,
   },
   {
     id: 2,
-    name: "Daniel Ortiz",
-    role: "Principal Architect & Founder",
-    text: "Choosing Planova was the best design decision I’ve made. They brought vision and expertise to every detail...",
-    img: "https://randomuser.me/api/portraits/men/22.jpg",
+    name: "Anonymous",
+    role: "Construction Client",
+    text: "The attention to detail in fabrication and safety compliance I've never seen. They exceeded our expectations in every way.",
+    img: "https://randomuser.me/api/portraits/men/46.jpg", // stock professional photo
+    rating: 5,
   },
   {
     id: 3,
     name: "Michael Brown",
-    role: "Brand Specialist",
-    text: "Working with Planova turned my vision into reality. Their flawless execution gave my living room elegance and charm...",
-    img: "https://randomuser.me/api/portraits/men/44.jpg",
+    role: "Energy Specialist",
+    text: "GULF's renewable energy solutions integrated perfectly into our industrial setup, reducing costs and improving sustainability.",
+    img: "https://randomuser.me/api/portraits/men/47.jpg", // stock energy specialist photo
+    rating: 5,
   },
   {
     id: 4,
-    name: "Daniel Ortiz",
-    role: "Principal Architect & Founder",
-    text: "Choosing Planova was the best design decision I’ve made. They brought vision and expertise to every detail...",
-    img: "https://randomuser.me/api/portraits/men/22.jpg",
+    name: "Sarah Ortiz",
+    role: "Project Founder",
+    text: "From procurement to execution, GULF handled our oil terminal needs with professionalism and expertise.",
+    img: "https://randomuser.me/api/portraits/women/48.jpg", // stock female professional photo
+    rating: 5,
   },
 ];
 

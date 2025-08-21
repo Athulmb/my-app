@@ -4,46 +4,34 @@ const ScrollAnimatedStackSections = () => {
   const sections = [
     {
       id: 1,
-      image:
-        "https://images.unsplash.com/photo-1527030280862-64139fba04ca?auto=format&fit=crop&w=1600&q=80",
-      title: "Yellow Suites",
+      image: "/Project1.png", // Overhead crane in factory yard (page 6)
+      title: "Atlas Steel Manufacturing",
       description:
-        "Vera Heights was a multi-unit housing project designed to reflect the surrounding hillside terrain. The approach emphasized terraced layouts and natural light.",
-      tags: ["Health", "Technology", "Monitoring", "Innovation"],
+        "A large-scale steel manufacturing project featuring modern overhead crane systems and advanced production facilities.",
+      tags: ["Manufacturing", "Steel", "Industry", "Innovation"],
       number: "01",
     },
     {
       id: 2,
-      image:
-        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80",
-      title: "Blue Complex",
+      image: "/Project2.png", // Accommodation building exterior (page 9)
+      title: "Workforce Living Solutions",
       description:
-        "An innovative residential development that harmonizes with the natural landscape through sustainable design principles and modern architectural elements.",
-      tags: ["Premium", "Excellence", "Standards", "Professional"],
+        "Comprehensive workforce accommodation facilities designed for comfort, safety, and community living standards.",
+      tags: ["Housing", "Workforce", "Community", "Sustainability"],
       number: "02",
     },
     {
       id: 3,
-      image:
-        "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80",
-      title: "Green Gardens",
+      image: "/Project3.png", // You’ll need to add this image into public folder
+      title: "Bassa Petroleum Storage Terminal",
       description:
-        "A thoughtfully designed community space that integrates green living concepts with contemporary urban planning and environmental consciousness.",
-      tags: ["Compassion", "Comfort", "Love", "Attention"],
+        "A strategic petroleum storage terminal project with integrated port infrastructure and modern logistics systems.",
+      tags: ["Energy", "Petroleum", "Infrastructure", "Logistics"],
       number: "03",
     },
-    {
-      id: 4,
-      image:
-        "https://images.unsplash.com/photo-1486308510493-aa64833634ef?auto=format&fit=crop&w=1600&q=80",
-      title: "Modern Heights",
-      description:
-        "Cutting-edge architectural design that combines functionality with aesthetic appeal, creating spaces that inspire and elevate daily living experiences.",
-      tags: ["Trust", "Reliability", "Communication", "Partnership"],
-      number: "04",
-    },
   ];
-
+  
+  
   const containerRef = useRef(null);
   const sectionRef = useRef(null);
   const cardsContainerRef = useRef(null);

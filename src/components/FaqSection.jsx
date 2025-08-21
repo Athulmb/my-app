@@ -3,12 +3,13 @@ import { Plus } from "lucide-react";
 import { motion } from "framer-motion";
 
 const faqs = [
-  "What services does Planova offer?",
-  "How involved will I be in the design process?",
-  "Can Planova handle both residential and commercial projects?",
-  "How long does a typical project take?",
-  "Do you offer turnkey solutions?",
+  "What services does GULF offer?",
+  "How is sustainability incorporated in your processes?",
+  "What is the typical timeline for a supply chain project?",
+  "Can GULF handle international projects?",
+  "What are your key sectors?",
 ];
+
 
 const FAQSection = () => {
   return (
@@ -59,7 +60,7 @@ const FAQSection = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <img
-            src="https://cdn.prod.website-files.com/6864c5e4479c3c44f5272e57/688b733acee45ceb0e445ce7_New%20Project.jpg"
+            src="/last.png"
             alt="Modern building"
             className="rounded-lg w-full h-[280px] md:h-[350px] lg:h-[400px] object-cover hover:scale-105 transition-all duration-300 shadow-lg"
           />
@@ -80,10 +81,7 @@ const FAQSection = () => {
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Still have questions on your mind or need a bit more clarity?
-              Whether you're exploring ideas, curious about our process, or
-              simply want a thoughtful conversation—our team is here and ready
-              to chat. Let's connect and bring your vision to life.
+              Still Looking For Answers? Need A Good Chat?
             </motion.p>
           </div>
         </motion.div>

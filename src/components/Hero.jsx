@@ -3,7 +3,7 @@ import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 // 🔹 Animated Title Component
 const AnimatedTitle = () => {
-  const text = "Buildings of Modern Design";
+  const text = "Solutions of Modern Trade and Manufacturing";
   const words = text.split(" ").map((word) => word.split(""));
 
   return (
@@ -64,9 +64,8 @@ const Hero = () => {
           <div className="relative mb-8">
             <div className="w-28 h-[4px] bg-button "></div>
             <p className="text-sm text-black/90 leading-relaxed">
-              Reimagining bioprocess safety with elegant design and top-tier<br />
-              viral clearance.
-            </p>
+              Delivering innovative trading and manufacturing solutions with excellence,
+              safety, and sustainability.            </p>
           </div>
 
           {/* 🔹 Replaced motion.h1 with AnimatedTitle */}
@@ -77,25 +76,25 @@ const Hero = () => {
         <div className="w-full lg:w-1/2 flex flex-col lg:flex-row gap-8 items-end justify-between">
           {/* Middle Card */}
           <motion.div
-            className="bg-[#1d3a35] w-full lg:w-[280px] rounded-xl p-6 shadow-lg order-1 lg:order-1"
+            className="bg-black/10  w-full lg:w-[280px] rounded-xl p-6 shadow-lg order-1 lg:order-1 border border-white/5"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-           <img
-  src="HeroMain.png"
-  alt="modern building"
-  className="w-full rounded-lg h-32 object-cover mb-4 hover:scale-105 transition-all duration-300 brightness-150"
-/>
+            <img
+              src="HeroMain.png"
+              alt="modern building"
+              className="w-full rounded-lg h-32 object-cover mb-4 hover:scale-105 transition-all duration-300 brightness-110"
+            />
 
-            <p className="text-gray-300 text-sm mb-6 leading-relaxed">
-              With a commitment to sustainability and innovative solutions, we create
-              beautiful, functional spaces.
+            <p className="text-gray-700 text-sm mb-6 leading-relaxed">
+              Trading and manufacturing is what we live and breathe. Providing
+              comprehensive solutions with passion, commitment, and daily drive.
             </p>
 
             {/* Animated Button */}
             <button className="relative overflow-hidden px-5 py-3 w-full rounded-md font-medium group bg-button">
-              <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
+              <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black/40 rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
               <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
                 Read More
               </span>
@@ -105,6 +104,7 @@ const Hero = () => {
             </button>
           </motion.div>
 
+
           {/* Right Text Section */}
           <motion.div
             className="flex-1 justify-end pt-8 lg:pt-16 order-2 lg:order-2"
@@ -113,20 +113,18 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <h2 className="text-2xl md:text-3xl font-bold mb-4 leading-tight">
-              Architecture is what we<br />
-              live and breathe
+              Building industries, <br />
+              powering growth.
             </h2>
             <p className="text-gray-800 text-sm mb-8 leading-relaxed">
-              Designing purposeful spaces with passion,<br />
-              architecture shapes how we live, move,<br />
-              connect, and inspire daily.
+              Building sustainable futures with advanced trade solutions.
             </p>
             <div className="flex items-center gap-3 cursor-pointer group">
-  <div className="w-16 h-[3px] bg-button transition-all duration-300 group-hover:w-20"></div>
-  <span className="text-button text-4xl transition-transform duration-300 group-hover:translate-x-2 inline-block">
-    &rarr; {/* HTML entity for right arrow → */}
-  </span>
-</div>
+              <div className="w-16 h-[3px] bg-button transition-all duration-300 group-hover:w-20"></div>
+              <span className="text-button text-4xl transition-transform duration-300 group-hover:translate-x-2 inline-block">
+                &rarr; {/* HTML entity for right arrow → */}
+              </span>
+            </div>
 
           </motion.div>
         </div>

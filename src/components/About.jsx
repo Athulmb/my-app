@@ -37,8 +37,8 @@ const AnimatedHeading = ({ text }) => {
   );
 };
 
-// Stat item with count-up animation
-const StatItem = ({ number, title, description, delay }) => {
+
+const StatItem = ({ number, prefix = "", suffix = "+", title, description, delay }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
@@ -47,7 +47,7 @@ const StatItem = ({ number, title, description, delay }) => {
   useEffect(() => {
     if (inView) {
       let start = 0;
-      const end = number;
+      const end = Number(number);
       const duration = 1000; // 1 second
       const increment = end / (duration / 16);
 
@@ -71,7 +71,9 @@ const StatItem = ({ number, title, description, delay }) => {
 
   return (
     <motion.div ref={ref} initial="hidden" animate={controls} variants={textVariants}>
-      <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold">{count}+</h3>
+      <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold">
+        {prefix}{count}{suffix}
+      </h3>
       <p className="mt-1 sm:mt-2 font-semibold text-sm sm:text-base">{title}</p>
       <p className="text-xs sm:text-sm text-gray-300">{description}</p>
     </motion.div>
@@ -82,27 +84,31 @@ const StatItem = ({ number, title, description, delay }) => {
 const StatsCard = () => (
   <div className="bg-[#1F2E2B] text-white rounded-lg p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6 md:space-y-8 w-full sm:w-[300px] md:w-[350px] lg:w-full min-h-[500px] sm:min-h-[600px] md:min-h-[700px] flex flex-col justify-center">
     <StatItem
-      number={82}
-      title="Projects"
-      description="Designed and executed 30+ mixed-use spaces that blend community, commerce, and culture."
+      number={320}
+      title="Employees"
+      description="Total group employees contributing to innovation and excellence across industries."
       delay={0}
     />
     <hr className="border-gray-600" />
     <StatItem
-      number={12}
-      title="Years of Experience"
-      description="Delivered masterplans for 12 urban regeneration projects across key metropolitan areas."
+      number={225}
+      prefix="$"
+      suffix="M+"
+      title="Projects"
+      description="Worth of completed projects in global manufacturing and infrastructure sectors."
       delay={0.2}
     />
     <hr className="border-gray-600" />
     <StatItem
-      number={13}
-      title="Awards"
-      description="Led the development of 40 sustainable buildings with an emphasis on energy efficiency and design integrity."
+      number={4}
+      suffix="+"
+      title="Countries"
+      description="Operations spanning Liberia, Turkey, UAE, and KSA with strong international presence."
       delay={0.4}
     />
   </div>
 );
+
 
 const AboutSection = () => {
   const ref = useRef(null);
@@ -117,7 +123,7 @@ const AboutSection = () => {
           style={{ y }}
           className="flex flex-col justify-center mx-0 md:mx-10 md:sticky md:top-1/2"
         >
-          <AnimatedHeading text="Rooted in Scandinavian design traditions, we approach every project with a deep respect for the city, its history, and the people who shape its future" />
+          <AnimatedHeading text="Rooted in global trade and manufacturing traditions, we approach every project with a deep respect for markets, their history, and the partners who shape the future." />
 
           <motion.p
             className="text-[#1F2E2B]/80 leading-relaxed text-sm sm:text-base"
@@ -125,8 +131,7 @@ const AboutSection = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            Collaboration is at the heart of everything we do. By working closely with clients, planners, and experts, we design spaces that balance functionality, beauty, and sustainability. Each project contributes to the urban landscape, creating meaningful connections between architecture, its surroundings, and the people who experience it.
-          </motion.p>
+Our group combines decades of expertise in global trade and manufacturing. By connecting skilled teams, trusted partners, and advanced processes, we deliver projects that drive sustainable growth across diverse markets.          </motion.p>
         </motion.div>
 
         {/* Right Stats Card */}

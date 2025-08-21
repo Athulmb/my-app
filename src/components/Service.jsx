@@ -26,35 +26,35 @@ const Services = () => {
   const services = [
     {
       id: "01",
-      title: "Discovery & Visioning",
+      title: "Procurement & Sourcing",
       description:
-        "As part of our process, we begin by exploring exactly what your goals are, what your preferences are, and what makes your website unique. We lay the groundwork for the project by having conversations and workshops to establish a foundation for action.",
+        "Every project begins with a strong foundation. We start by uncovering client needs, defining goals, and aligning stakeholder visions. Through global procurement and logistics, we source materials with precision to establish your value proposition.",
       steps: [
-        "Uncover user needs",
+        "Uncover client needs",
         "Define project goals",
-        "Explore possibilities",
-        "Align shared vision",
+        "Align stakeholder vision",
         "Clarify core purpose",
+        "Establish value proposition",
       ],
     },
     {
       id: "02",
-      title: "Design Development",
+      title: "Fabrication & Development",
       description:
-        "Before any design work starts, we dive deep into your brand story, user needs, and business objectives. We believe a successful project is built on clarity and alignment — which is why our first step is always thoughtful exploration and strategy.",
+        "With clarity established, we dive deep into development. This stage is a thoughtful process of exploration, material sourcing, and refinement. Through iteration and fabrication, we integrate solutions that align seamlessly with your goals.",
       steps: [
         "Conceptual ideas",
-        "Develop layouts",
-        "Select key materials",
-        "Finalize design",
-        "Integrate experience",
+        "Sourcing materials",
+        "Select key components",
+        "Final fabrication iteration",
+        "Integrate solutions",
       ],
     },
     {
       id: "03",
-      title: "Build & Execute",
+      title: "Delivery & Execution",
       description:
-        "We believe great work starts with alignment. Our process begins by identifying your business needs, your goals, and your unique edge. Through collaborative planning and strategic thinking, we build a comprehensive roadmap for success.",
+        "Execution is where strategy meets action. We mobilize the right teams, coordinate phases, and ensure rigorous quality control. With collaborative planning, we implement solutions and deliver the final product with excellence.",
       steps: [
         "Mobilize project team",
         "Coordinate phases",
@@ -64,6 +64,8 @@ const Services = () => {
       ],
     },
   ];
+  
+  
 
   const toggleService = (index) => {
     setActiveService(activeService === index ? null : index);
@@ -77,9 +79,7 @@ const Services = () => {
           {/* Text Section */}
           <div className="w-full lg:w-1/3 mb-8 lg:mb-0 px-0 lg:px-6">
             <p className="text-[#1D2D28] text-base sm:text-lg leading-relaxed animate-fadeInUp font-normal">
-              At Planova, we create spaces that blend seamlessly with their surroundings,
-              enhancing both functionality and aesthetic appeal. Our process is thoughtful,
-              collaborative, and tailored to bring
+            From sourcing to execution, every step delivered with precision.
             </p>
           </div>
 

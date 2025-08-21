@@ -10,55 +10,55 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-          if (window.scrollY > lastScrollY) {
-            setShowNavbar(false);
-          } else {
-            setShowNavbar(true);
-          }
-          setLastScrollY(window.scrollY);
-    
-          // Change background only when scrolled past 50px
-          if (window.scrollY > 50) {
-            setScrolled(true);
-          } else {
-            setScrolled(false);
-          }
+            if (window.scrollY > lastScrollY) {
+                setShowNavbar(false);
+            } else {
+                setShowNavbar(true);
+            }
+            setLastScrollY(window.scrollY);
+
+            // Change background only when scrolled past 50px
+            if (window.scrollY > 50) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
         };
-    
+
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-      }, [lastScrollY]);
+    }, [lastScrollY]);
 
     return (
         <nav
-      className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-500
+            className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-500
         ${showNavbar ? "translate-y-0" : "-translate-y-full"} 
-        ${scrolled ? "bg-slate-700 shadow-md" : "bg-transparent"}
+        ${scrolled ? "bg-button/50 shadow-md" : "bg-transparent"}
       `}
-    >
-        <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-20 py-4">
-          {/* Logo */}
-          {/* Logo */}
-<div className="flex flex-col items-start">
-  {/* Image Logo */}
-  <img
-    src="/logo.png"
-    alt="Gulf Logo"
-    className="h-16 w-auto sm:h-14 md:h-16 lg:h-24 object-contain"
-  />
+        >
+            <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-20 py-4">
+                {/* Logo */}
+                {/* Logo */}
+                <div className="flex flex-col items-start">
+                    {/* Image Logo */}
+                    <img
+                        src="/logo.png"
+                        alt="Gulf Logo"
+                        className="h-16 w-auto sm:h-14 md:h-16 lg:h-32 object-contain"
+                    />
 
-  {/* Subtitle */}
-  <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mt-1">
+                    {/* Subtitle */}
+                    {/* <div className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mt-1">
     Training and Manufacturing Group
-  </div>
-</div>
+  </div> */}
+                </div>
 
 
                 {/* Desktop Menu */}
-                <div className="hidden md:flex items-center bg-slate-600 rounded-md px-2 py-1 space-x-2">
+                <div className="hidden md:flex items-center bg-slate-600/30 rounded-md px-2 py-1 space-x-2">
                     <a
                         href="#"
-                        className="text-button hover:text-light font-medium px-4 py-2 bg-slate-700/50 rounded-md mr-2"
+                        className="text-button hover:text-light font-medium px-4 py-2 bg-slate-700/30 rounded-md mr-2"
                     >
                         Home
                     </a>
@@ -88,7 +88,7 @@ const Navbar = () => {
                                 href="#"
                                 className="block px-6 py-4 text-lg hover:bg-gray-200 hover:text-button rounded-t-md transition duration-300"
                             >
-                               Project 1
+                                Project 1
                             </a>
                             <a
                                 href="#"
@@ -118,12 +118,7 @@ const Navbar = () => {
                     >
                         About
                     </a>
-                    <a
-                        href="#"
-                        className="px-4 py-2 font-medium rounded-md text-white hover:text-light hover:bg-slate-700 transition duration-300"
-                    >
-                        Projects
-                    </a>
+
                 </div>
 
                 {/* Desktop CTA */}
