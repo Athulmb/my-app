@@ -39,7 +39,7 @@ const RecognitionSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <section className="bg-[#152d28] text-white py-20 px-6 md:px-12 lg:px-20">
+    <section className="bg-background text-white py-20 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-20">
           Recognitions We Got Awards
@@ -51,7 +51,7 @@ const RecognitionSection = () => {
             {awardsData.map((award, index) => (
               <div
                 key={index}
-                className={`bg-[#1f3a33] p-6 rounded-xl cursor-pointer hover:bg-[#28503f] transition-all duration-300 ${
+                className={`bg-white/10 p-6 rounded-xl cursor-pointer hover:bg-white/5 transition-all duration-300 ${
                   activeIndex === index ? "shadow-lg scale-105" : ""
                 }`}
                 onMouseEnter={() => setActiveIndex(index)}
@@ -75,7 +75,7 @@ const RecognitionSection = () => {
             {awardsData.map((award, index) => (
               <div
                 key={index}
-                className={`bg-background p-6 rounded-xl transition-opacity duration-500 ${
+                className={`bg-white/10 p-6 rounded-xl transition-opacity duration-500 ${
                   activeIndex === index ? "opacity-100" : "opacity-0 absolute md:relative"
                 }`}
               >
