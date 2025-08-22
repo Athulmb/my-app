@@ -1,13 +1,15 @@
+"use client";
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const awardsData = [
+const awards = [
   {
     title: "Visionary Award",
     year: "2025",
     description:
       "Honoring groundbreaking ideas that redefine architectural design standards.",
     image:
-      "https://images.unsplash.com/photo-1616596870566-5b5f0fafff69?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dGhyb3BoeXxlbnwwfHwwfHw%3D&ixlib=rb-4.0.3&q=80&w=400",
+      "Project1.png",
   },
   {
     title: "Excellence in Design",
@@ -15,81 +17,84 @@ const awardsData = [
     description:
       "Celebrating forward-thinking architecture that merges beauty and function.",
     image:
-      "https://images.unsplash.com/photo-1596496056401-82e420f93e16?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2N1bHB0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400",
-  },
+    "Project2.png",  },
   {
     title: "Timeless Structure",
     year: "2023",
     description:
       "Recognizing enduring designs that inspire across generations and cultures.",
     image:
-      "https://images.unsplash.com/photo-1596496056401-82e420f93e16?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y2hhbGxlbmdlJTIwYXJjaGl0ZWN0dXJlfGVufDB8fDB8fA%3D%3D&ixlib=rb-4.0.3&q=80&w=400",
-  },
+    "Project3.png",  },
   {
     title: "Built Environment Impact",
     year: "2020",
     description:
       "Awarding projects that transform communities through purposeful design.",
     image:
-      "https://images.unsplash.com/photo-1581091870623-8a92e3de051e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YnVpbGRpbmclMjBhcmNoaXRlY3R1cmV8ZW58MHx8MHx8&ixlib=rb-4.0.3&q=80&w=400",
-  },
+    "Project1.png",  },
 ];
 
-const RecognitionSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const AwardsSection = () => {
+  const [hovered, setHovered] = useState(null);
 
   return (
-    <section className="bg-background text-white py-20 px-6 md:px-12 lg:px-20">
-      <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-20">
-          Recognitions We Got Awards
+    <section className="bg-[#0f2924] text-white py-20 px-6 md:px-20 relative">
+      {/* Heading */}
+      <motion.div
+        className="text-center mb-16"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          Recognitions We <br /> Got Awards
         </h2>
+      </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative">
-          {/* Left Column - Titles */}
-          <div className="flex flex-col gap-6">
-            {awardsData.map((award, index) => (
-              <div
-                key={index}
-                className={`bg-white/10 p-6 rounded-xl cursor-pointer hover:bg-white/5 transition-all duration-300 ${
-                  activeIndex === index ? "shadow-lg scale-105" : ""
-                }`}
-                onMouseEnter={() => setActiveIndex(index)}
-              >
-                <h3 className="font-semibold text-lg md:text-xl">{award.title}</h3>
-              </div>
-            ))}
-          </div>
+      {/* Awards List */}
+      <div className="space-y-6 max-w-7xl mx-auto w-full">
+        {awards.map((award, index) => (
+          <motion.div
+            key={index}
+            className="grid grid-cols-1 md:grid-cols-3 items-center bg-[#16332f] p-6 rounded-lg min-h-[150px] cursor-pointer"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
+            onMouseEnter={() => setHovered(index)}
+            onMouseLeave={() => setHovered(null)}
+          >
+            {/* Left: Title */}
+            <h3 className="text-lg md:text-xl font-semibold">{award.title}</h3>
 
-          {/* Center Column - Image */}
-          <div className="flex justify-center items-center relative">
-            <img
-              src={awardsData[activeIndex].image}
-              alt={awardsData[activeIndex].title}
-              className="w-56 h-56 md:w-64 md:h-64 object-cover rounded-xl shadow-2xl transition-all duration-500"
-            />
-          </div>
+            {/* Center: Hover Image */}
+            <div className="flex justify-center items-center">
+              <AnimatePresence>
+                {hovered === index && (
+                  <motion.img
+                    key={award.image}
+                    src={award.image}
+                    alt={award.title}
+                    className="w-28 md:w-40 lg:w-52 object-contain"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                )}
+              </AnimatePresence>
+            </div>
 
-          {/* Right Column - Details */}
-          <div className="flex flex-col gap-6">
-            {awardsData.map((award, index) => (
-              <div
-                key={index}
-                className={`bg-white/10 p-6 rounded-xl transition-opacity duration-500 ${
-                  activeIndex === index ? "opacity-100" : "opacity-0 absolute md:relative"
-                }`}
-              >
-                <span className="font-bold text-sm md:text-base">{award.year}</span>
-                <p className="mt-2 text-sm md:text-base text-gray-300">
-                  {award.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
+            {/* Right: Year + Description */}
+            <div className="text-sm md:text-base text-gray-200 text-right">
+              <p className="font-bold text-white">{award.year}</p>
+              <p>{award.description}</p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
 };
 
-export default RecognitionSection;
+export default AwardsSection;

@@ -2,7 +2,7 @@ import React from 'react'
 import AboutHero from '../components/About/AboutHero'
 import StatsSection from '../components/About/StatsSection'
 import OurMission from '../components/About/Mission'
-import RecognitionSection from '../components/About/AwardSection'
+import AwardsSection from '../components/About/AwardSection'
 
 const About = () => {
   return (
@@ -10,8 +10,9 @@ const About = () => {
     <AboutHero/>
     <StatsSection/>
     <OurMission/>
-    <RecognitionSection/>
+    <AwardsSection/>
     </>
+   
   )
 }
 
