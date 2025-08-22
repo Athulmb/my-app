@@ -75,7 +75,7 @@ const RecognitionSection = () => {
             {awardsData.map((award, index) => (
               <div
                 key={index}
-                className={`bg-[#1f3a33] p-6 rounded-xl transition-opacity duration-500 ${
+                className={`bg-background p-6 rounded-xl transition-opacity duration-500 ${
                   activeIndex === index ? "opacity-100" : "opacity-0 absolute md:relative"
                 }`}
               >

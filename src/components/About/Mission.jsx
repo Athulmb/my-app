@@ -5,7 +5,7 @@ const OurMission = () => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <section className="bg-[#152d28] text-white py-16 px-6 md:px-12 lg:px-20">
+    <section className="bg-background text-white py-16 px-6 md:px-12 lg:px-20">
       <div className="max-w-6xl mx-auto">
         {/* Text with entry animation */}
         <motion.div
