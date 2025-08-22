@@ -46,7 +46,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#F9F8F3] py-10 px-4 sm:px-6 md:px-8">
+    <footer className="bg-secondary py-10 px-4 sm:px-6 md:px-8">
       <div className="max-w-full mx-auto">
         {/* Top Section */}
         <div className="flex flex-col lg:flex-row justify-between items-start gap-10 lg:gap-16 mb-12">

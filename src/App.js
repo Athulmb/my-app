@@ -1,27 +1,32 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Service from './components/Service'
-import AboutSection from './components/About'
-import ScorlAnimtionCards from './components/ScorlAnimtionCards'
-import Review from './components/Review'
-import FaqSection from './components/FaqSection'
-import Footer from './components/Footer'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Layout from "./Pages/Layout";
+
+import Home from "./Pages/Home";
+import Contact from "./Pages/Contact";
+import About from "./Pages/About";
+
+
+
+
+
 const App = () => {
   return (
-   <>
-   <Navbar />
-   <Hero />
-   <Service />
-   <AboutSection />
-   <ScorlAnimtionCards />
-   <Review />
-   <FaqSection />
-    <Footer />
- 
-  
-   </>
-  )
-}
+    <Router>
+      <Layout>
+        <Routes>
+          {/* Home page with multiple sections */}
+          <Route path="/" element={<Home />} />
+          <Route path="/contact" element={<Contact/>} />
+          <Route path="/about" element={<About/>} />
 
-export default App
+
+
+        </Routes>
+      </Layout>
+    </Router>
+  );
+};
+
+export default App;
