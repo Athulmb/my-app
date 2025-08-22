@@ -71,35 +71,7 @@ const Footer = () => {
           </div>
 
           {/* Newsletter Signup */}
-          <div className="w-full lg:w-1/2">
-            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#24342E] mb-3">
-              Sign up for our newsletter
-            </h3>
-            <p className="text-sm sm:text-base text-[#24342E]/70 mb-5 max-w-md">
-              Stay updated with the latest projects, design tips, and insights—delivered straight to your inbox.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-2 py-2 border-b border-[#24342E] bg-transparent text-[#24342E] placeholder-gray-500 focus:border-button outline-none transition-colors duration-300 text-sm sm:text-base"
-              />
-              <button
-                onClick={handleSubmit}
-                className="relative overflow-hidden px-4 sm:px-6 py-2 rounded-md font-medium group bg-button text-sm sm:text-base"
-              >
-                <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
-                <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
-                  Subscribe
-                </span>
-                <span className="absolute inset-0 flex items-center justify-center text-white font-medium transform translate-y-full transition-transform duration-500 group-hover:translate-y-0">
-                  Subscribe
-                </span>
-              </button>
-            </div>
-          </div>
+         
         </div>
 
         {/* Navigation Links */}
