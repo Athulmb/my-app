@@ -38,7 +38,7 @@ const AwardsSection = () => {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <section className="bg-[#0f2924] text-white py-20 px-6 md:px-20 relative">
+    <section className="bg-background text-white py-20 px-6 md:px-20 relative">
       {/* Heading */}
       <motion.div
         className="text-center mb-16"
@@ -56,7 +56,7 @@ const AwardsSection = () => {
         {awards.map((award, index) => (
           <motion.div
             key={index}
-            className="grid grid-cols-1 md:grid-cols-3 items-center bg-[#16332f] p-6 rounded-lg min-h-[150px] cursor-pointer"
+            className="grid grid-cols-1 md:grid-cols-3 items-center bg-white/10 p-6 rounded-lg min-h-[150px] cursor-pointer"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
