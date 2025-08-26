@@ -19,7 +19,8 @@ const navbarData = {
         { label: "Project 3", href: "#" },
       ],
     },
-    { label: "Blog", href: "#" },
+    { label: "Blog", href: "/blog" },
+    { label: "Service", href: "/service" },
     { label: "About", href: "/about" },
   ],
   cta: {

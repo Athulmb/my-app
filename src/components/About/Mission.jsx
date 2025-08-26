@@ -15,17 +15,17 @@ const OurMission = () => {
           transition={{ duration: 1, ease: "easeOut" }}
         >
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4">
-            Our Mission
+            Lorem Ipsum
           </h2>
           <p className="text-[#eaeaea] mb-4 max-w-5xl">
-            Our mission is to design spaces that inspire, elevate, and endure. We
-            believe architecture should serve both form and function while
-            reflecting the unique identity of each client.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+            vitae eros eget tellus tristique bibendum. Donec rutrum sed sem quis
+            venenatis. Proin viverra risus a eros volutpat tempor.
           </p>
           <p className="text-[#eaeaea] max-w-5xl">
-            Through thoughtful planning, innovative solutions, and a commitment to
-            excellence, we aim to create environments that enrich lives,
-            strengthen communities, and stand the test of time.
+            Curabitur vel sem at velit placerat egestas. Suspendisse potenti.
+            Integer pulvinar leo id viverra feugiat. Pellentesque libero justo,
+            semper at tempus vel, ultrices in ligula.
           </p>
         </motion.div>
 
@@ -42,10 +42,10 @@ const OurMission = () => {
           <img
             src={
               hovered
-                ? "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1350&q=80"
-                : "https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&w=1350&q=80"
+                ? "https://picsum.photos/1200/800?random=2"
+                : "https://picsum.photos/1200/800?random=1"
             }
-            alt="Modern architecture"
+            alt="Lorem ipsum"
             className="w-full h-80 md:h-96 lg:h-[500px] object-cover transition-all duration-500"
           />
         </motion.div>

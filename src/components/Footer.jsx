@@ -18,18 +18,18 @@ const Footer = () => {
   ];
 
   const navigationLinks = [
-    { title: 'Home', href: '#', active: true },
-    { title: 'About', href: '#' },
-    { title: 'Blog', href: '#' },
-    { title: 'Projects', href: '#' }
+    { title: 'Home', href: '/', active: true },
+    { title: 'About', href: '/about' },
+    { title: 'Blog', href: '/blog' },
+    { title: 'Projects', href: '/project' }
   ];
 
   const secondaryLinks = [
-    { title: 'Project Single', href: '#' },
-    { title: 'Blog Single', href: '#' },
-    { title: 'Contact', href: '#' },
-    { title: '404', href: '#' },
-    { title: 'Privacy Policy', href: '#' }
+    { title: 'Project Single', href: '/single-page' },
+    { title: 'Blog Single', href: 'blog-single' },
+    { title: 'Contact', href: '/contact' },
+    { title: '404', href: '*' },
+    { title: 'Privacy Policy', href: '/privacy-policy' }
   ];
 
   const legalLinks = [

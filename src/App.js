@@ -8,6 +8,7 @@ import About from "./Pages/About";
 import Blog from "./Pages/Blog";
 import Error404 from "./Pages/Error404";
 import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import ServicesPage from "./Pages/Services";
 
 const App = () => {
   return (
@@ -19,6 +20,8 @@ const App = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/service" element={<ServicesPage />} />
+
 
 
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />

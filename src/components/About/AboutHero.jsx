@@ -29,14 +29,16 @@ const AboutHero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <p className="text-light font-semibold mb-3">About Us</p>
+          <p className="text-light font-semibold mb-3">
+            Lorem ipsum dolor
+          </p>
           <motion.h1
             className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 mt-10"
             initial={{ rotateX: -90, opacity: 0 }}
             whileInView={{ rotateX: 0, opacity: 1 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
           >
-            Architecture Of <br /> Our Buildings
+            Lorem ipsum <br /> dolor sit amet
           </motion.h1>
           <div className="w-16 h-[3px] bg-light mb-6"></div>
           <motion.p
@@ -45,8 +47,11 @@ const AboutHero = () => {
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
           >
-            Our buildings embody timeless architecture—blending form, function,
-            and beauty to create inspiring, purposeful spaces.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+            faucibus, nisl nec malesuada ultricies, purus lectus hendrerit
+            lorem, eget luctus massa justo a orci. Sed dictum, magna eu
+            malesuada porttitor, velit est ultrices justo, vel semper sapien
+            nibh ac leo.
           </motion.p>
         </motion.div>
 
@@ -71,8 +76,7 @@ const AboutHero = () => {
   );
 };
 
-// 🔹 Image component with smooth hover transition
-// 🔹 Image component with smooth hover + zoom reveal
+// 🔹 Hover Image Component
 const HoverImage = ({ defaultSrc, hoverSrc }) => {
   const [hovered, setHovered] = useState(false);
 
@@ -85,11 +89,11 @@ const HoverImage = ({ defaultSrc, hoverSrc }) => {
       {/* Default Image */}
       <motion.img
         src={defaultSrc}
-        alt="Building"
+        alt="Lorem"
         className="absolute inset-0 w-full h-full object-cover rounded-lg"
         animate={{
           opacity: hovered ? 0 : 1,
-          scale: hovered ? 1.05 : 1, // slight zoom out when leaving
+          scale: hovered ? 1.05 : 1,
         }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
       />
@@ -97,17 +101,16 @@ const HoverImage = ({ defaultSrc, hoverSrc }) => {
       {/* Hover Image */}
       <motion.img
         src={hoverSrc}
-        alt="Building Hover"
+        alt="Lorem Hover"
         className="absolute inset-0 w-full h-full object-cover rounded-lg"
         animate={{
           opacity: hovered ? 1 : 0,
-          scale: hovered ? 1 : 1.05, // zoom in smoothly while fading
+          scale: hovered ? 1 : 1.05,
         }}
         transition={{ duration: 0.8, ease: "easeInOut" }}
       />
     </div>
   );
 };
-
 
 export default AboutHero;
