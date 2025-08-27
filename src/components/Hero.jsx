@@ -3,8 +3,8 @@ import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 // 🔹 Animated Title Component
 const AnimatedTitle = () => {
-  const text = "Solutions of Modern Trade and Manufacturing";
-  const words = text.split(" ").map((word) => word.split(""));
+  const text = "Pioneering Modern Trade and Manufacturing";
+  const chars = text.split(""); // split by character including spaces
 
   return (
     <h1
@@ -12,37 +12,16 @@ const AnimatedTitle = () => {
       aria-label={text}
       style={{ transformStyle: "preserve-3d", perspective: "1000px" }}
     >
-      {words.map((chars, wi) => (
-        <div
-          key={wi}
-          className="word"
-          aria-hidden="true"
-          style={{
-            position: "relative",
-            display: "inline-block",
-            transformStyle: "preserve-3d",
-            perspective: "1000px",
-            marginRight: "0.4rem",
-          }}
+      {chars.map((char, index) => (
+        <motion.span
+          key={index}
+          style={{ display: "inline-block", transformOrigin: "50% 50%" }}
+          initial={{ y: 40, opacity: 0, rotateX: -90 }}
+          animate={{ y: 0, opacity: 1, rotateX: 0 }}
+          transition={{ duration: 0.5, delay: index * 0.05 }}
         >
-          {chars.map((char, ci) => (
-            <motion.div
-              key={ci}
-              className="char"
-              aria-hidden="true"
-              style={{
-                position: "relative",
-                display: "inline-block",
-                transformOrigin: "50% 50%",
-              }}
-              initial={{ y: 40, opacity: 0, rotateX: -90 }}
-              animate={{ y: 0, opacity: 1, rotateX: 0 }}
-              transition={{ duration: 0.5, delay: wi * 0.3 + ci * 0.05 }}
-            >
-              {char}
-            </motion.div>
-          ))}
-        </div>
+          {char === " " ? "\u00A0" : char} {/* preserve spaces */}
+        </motion.span>
       ))}
     </h1>
   );
@@ -62,13 +41,14 @@ const Hero = () => {
         {/* Left Text Section */}
         <div className="w-full lg:w-1/2">
           <div className="relative mb-8">
-            <div className="w-28 h-[4px] bg-button "></div>
+            <div className="w-28 h-[4px] bg-button"></div>
             <p className="text-sm text-black/90 leading-relaxed pt-3">
-              Delivering innovative trading and manufacturing solutions with excellence,
-              safety, and sustainability.            </p>
+              Delivering world-class solutions across manufacturing and trade,
+              powered by innovation, quality, and long-term sustainability.
+            </p>
           </div>
 
-          {/* 🔹 Replaced motion.h1 with AnimatedTitle */}
+          {/* 🔹 Animated Title */}
           <AnimatedTitle />
         </div>
 
@@ -76,20 +56,21 @@ const Hero = () => {
         <div className="w-full lg:w-1/2 flex flex-col lg:flex-row gap-8 items-end justify-between">
           {/* Middle Card */}
           <motion.div
-            className="bg-black/10  w-full lg:w-[280px] rounded-xl p-6 shadow-lg order-1 lg:order-1 border border-white/5"
+            className="bg-black/10 w-full lg:w-[280px] rounded-xl p-6 shadow-lg order-1 lg:order-1 border border-white/5"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <img
-              src="HeroMain.png"
-              alt="modern building"
+          src="https://stevensec.com/hs-fs/hubfs/STEVENS%20March%202019%20/Industry%20pages/Oil%20and%20Gas/oil-and-gas-construction-company/gas-construction-companies.jpg?width=1200&height=600&name=gas-construction-companies.jpg"
+          alt="modern building"
               className="w-full rounded-lg h-32 object-cover mb-4 hover:scale-105 transition-all duration-300 brightness-110"
             />
 
             <p className="text-gray-700 text-sm mb-6 leading-relaxed">
-              Trading and manufacturing is what we live and breathe. Providing
-              comprehensive solutions with passion, commitment, and daily drive.
+              We bring together expertise in steel, energy, logistics, and
+              advanced manufacturing to create solutions that fuel growth and
+              shape the industries of tomorrow.
             </p>
 
             {/* Animated Button */}
@@ -103,7 +84,7 @@ const Hero = () => {
               </span>
             </button>
           </motion.div>
-          {/* Right Text Section */}
+
           {/* Right Text Section */}
           <motion.div
             className="flex-1 justify-end pt-8 lg:pt-16 order-2 lg:order-2 relative flex flex-col items-start gap-6"
@@ -111,29 +92,30 @@ const Hero = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            {/* 🔹 GIF Card */}
+            {/* GIF Card */}
             <motion.div
-              className="bg-black/10 w-full lg:w-[280px] rounded-xl p-4 shadow-lg border border-white/5"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <img
-                src="/CityBuild.gif"
+              <video
+                loop
+                autoPlay
+                muted
+                src="/Gif.mp4"
                 alt="city build animation"
-                className="w-full h-32 object-cover rounded-lg"
+                className="w-full h-44 object-cover rounded-lg"
               />
             </motion.div>
 
             <h2 className="text-2xl md:text-3xl font-bold leading-tight">
-              Building industries, <br />
-              powering growth.
+              Creating value, <br /> powering global industries.
             </h2>
             <p className="text-gray-800 text-sm leading-relaxed">
-              Building sustainable futures with advanced trade solutions.
+              We connect markets and help businesses thrive globally.
             </p>
 
-            {/* 🔹 Arrow */}
+            {/* Arrow */}
             <motion.div className="flex items-center gap-3 cursor-pointer">
               <motion.img
                 src="/arrow.svg"
@@ -148,24 +130,24 @@ const Hero = () => {
               />
             </motion.div>
           </motion.div>
-
-
-
         </div>
       </div>
 
       {/* Bottom Hero Image (Scroll Swap) */}
       <div className="w-full mx-auto relative h-[500px] md:h-[600px]">
-        {/* First Image */}
+        {/* First I
+        mage */}
         <motion.img
-          src="Hero1.png"
+                  src="Hero1.jpg"
+
           alt="modern design house"
           className="w-full rounded-2xl shadow-lg object-cover h-full absolute top-0 left-0"
           style={{ opacity: firstImageOpacity }}
         />
         {/* Second Image */}
         <motion.img
-          src="Hero2.png"
+                  src="Hero2.jpg"
+
           alt="modern design house 2"
           className="w-full rounded-2xl shadow-lg object-cover h-full absolute top-0 left-0"
           style={{ opacity: secondImageOpacity }}

@@ -1,14 +1,18 @@
-import React from 'react'
-import ServiceHero from '../components/Services/ServiceHero'
-import Services from '../components/Service'
+import React from 'react';
+import ServiceHero from '../components/Services/ServiceHero';
+import Services from '../components/Services/ServicesSection';
 
 const ServicesPage = () => {
   return (
-   <>
-   <ServiceHero/>
-   <Services/>
-   </>
-  )
-}
+    <>
+      <ServiceHero />
+      
+      {/* Add id here for scrolling */}
+      <div id="services-section">
+        <Services />
+      </div>
+    </>
+  );
+};
 
-export default ServicesPage
+export default ServicesPage;

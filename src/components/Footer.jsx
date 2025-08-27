@@ -1,149 +1,175 @@
-import React, { useState, useEffect } from 'react';
-import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+
+// Custom "X" icon
+const XIcon = ({ size = 28, className = "" }) => (
+  <svg
+    viewBox="0 0 24 24"
+    width={size}
+    height={size}
+    className={className}
+    fill="none"
+  >
+    <path
+      d="M4 4L20 20M20 4L4 20"
+      stroke="currentColor"
+      strokeWidth="2.6"
+      strokeLinecap="round"
+    />
+  </svg>
+);
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
   const [animateLetters, setAnimateLetters] = useState(false);
 
   useEffect(() => {
     setAnimateLetters(true);
   }, []);
 
-  // Logo letters
-  const logoLetters = [
-    { letter: 'G', color: 'text-background' },
-    { letter: 'U', color: 'text-background' },
-    { letter: 'L', color: 'text-button' },
-    { letter: 'F', color: 'text-background' },
-  ];
-
   const navigationLinks = [
-    { title: 'Home', href: '/', active: true },
-    { title: 'About', href: '/about' },
-    { title: 'Blog', href: '/blog' },
-    { title: 'Projects', href: '/project' }
+    { title: "Home", href: "/", active: true },
+    { title: "About", href: "/about" },
+    { title: "Blog", href: "/blog" },
+    { title: "Projects", href: "/project" },
   ];
-
   const secondaryLinks = [
-    { title: 'Project Single', href: '/single-page' },
-    { title: 'Blog Single', href: 'blog-single' },
-    { title: 'Contact', href: '/contact' },
-    { title: '404', href: '*' },
-    { title: 'Privacy Policy', href: '/privacy-policy' }
+    { title: "Project Single", href: "/single-page" },
+    { title: "Blog Single", href: "blog-single" },
+    { title: "Contact", href: "/contact" },
+    { title: "404", href: "*" },
+    { title: "Privacy Policy", href: "/privacy-policy" },
   ];
-
   const legalLinks = [
-    { title: 'Term & Condition', href: '#' },
-    { title: 'Licence', href: '#' },
-    { title: 'Changelog', href: '#' },
-    { title: 'Instructions', href: '#' },
-    { title: 'Style Guide', href: '#' }
+    { title: "Term & Condition", href: "#" },
+    { title: "Licence", href: "#" },
+    { title: "Changelog", href: "#" },
+    { title: "Instructions", href: "#" },
+    { title: "Style Guide", href: "#" },
   ];
 
-  const handleSubmit = () => {
-    console.log('Newsletter signup:', email);
-    setEmail('');
-  };
+  // Colors
+  const bgTint = "#F6F4EC";
+  const tileTint = "#F2F0E9";
+  const darkInk = "#24342E";
+  const accent = "#FF4D1A";
 
   return (
-    <footer className="bg-secondary py-10 px-4 sm:px-6 md:px-8">
-      <div className="max-w-full mx-auto">
-        {/* Top Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-10 lg:gap-16 mb-12">
-          {/* Logo */}
-          <div className="flex items-center">
-            {logoLetters.map((item, index) => (
-              <span
-                key={index}
-                className={`text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold ${item.color} inline-block transform transition-all duration-700 ease-out ${
-                  animateLetters 
-                    ? 'translate-y-0 opacity-100 rotate-0' 
-                    : 'translate-y-8 opacity-0 rotate-12'
-                }`}
-                style={{
-                  transitionDelay: `${index * 100}ms`,
-                  fontFamily: 'system-ui, -apple-system, sans-serif'
-                }}
-              >
-                {item.letter}
-              </span>
-            ))}
-          </div>
+    <footer className="py-12 sm:py-16" style={{ backgroundColor: bgTint }}>
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24">
 
-          {/* Newsletter Signup */}
-         
+        {/* 🔹 Top Section (Logo only) */}
+        <div className="mb-12">
+  <div className="flex items-start">
+    {["G", "U", "L", "F"].map((ch, i) => {
+      const isAccent = ch === "L";
+      return (
+        <span
+          key={i}
+          className={`font-extrabold leading-none inline-block select-none transition-all duration-700 ease-out ${
+            animateLetters
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-8"
+          }`}
+          style={{
+            color: isAccent ? accent : darkInk,
+            fontSize: "clamp(100px, 22vw, 260px)", // ⬆️ Bigger range
+            fontWeight: 900, // ⬆️ Heaviest bold
+            letterSpacing: "-0.02em", // tighten letters
+            transitionDelay: `${i * 120}ms`,
+          }}
+        >
+          {ch}
+        </span>
+      );
+    })}
+  </div>
+</div>
+
+
+        {/* 🔹 Middle Section */}
+        <div className="mb-12">
+          <div className="grid gap-6 lg:grid-cols-2">
+            {/* Link block - Left half */}
+            <div
+              className="rounded-xl p-6 sm:p-8 h-full"
+              style={{ backgroundColor: tileTint }}
+            >
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10 text-sm sm:text-base">
+                {/* Primary */}
+                <div className="space-y-2 sm:space-y-3">
+                  {navigationLinks.map((link, idx) => (
+                    <a
+                      key={idx}
+                      href={link.href}
+                      className={`block ${
+                        link.active ? "font-medium" : "hover:opacity-80"
+                      }`}
+                      style={{ color: link.active ? accent : darkInk }}
+                    >
+                      {link.title}
+                    </a>
+                  ))}
+                </div>
+                {/* Secondary */}
+                <div className="space-y-2 sm:space-y-3">
+                  {secondaryLinks.map((link, idx) => (
+                    <a
+                      key={idx}
+                      href={link.href}
+                      className="block hover:opacity-80"
+                      style={{ color: darkInk }}
+                    >
+                      {link.title}
+                    </a>
+                  ))}
+                </div>
+                {/* Legal */}
+                <div className="space-y-2 sm:space-y-3">
+                  {legalLinks.map((link, idx) => (
+                    <a
+                      key={idx}
+                      href={link.href}
+                      className="block hover:opacity-80"
+                      style={{ color: darkInk }}
+                    >
+                      {link.title}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Social tiles - Right half */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 h-full">
+              {[
+                { key: "fb", node: <Facebook size={32} />, href: "#" },
+                { key: "ig", node: <Instagram size={32} />, href: "#" },
+                { key: "li", node: <Linkedin size={32} />, href: "#" },
+                { key: "x", node: <XIcon size={32} />, href: "#" },
+              ].map((item) => (
+                <a
+                  key={item.key}
+                  href={item.href}
+                  className="rounded-xl flex items-center justify-center h-full py-6"
+                  style={{ backgroundColor: tileTint, color: darkInk }}
+                >
+                  {item.node}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
 
-        {/* Navigation Links */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-10 bg-[#F2F0E9] p-6 sm:p-8 rounded-lg mb-12 text-sm sm:text-base">
-          {/* Primary Navigation */}
-          <div className="space-y-2 sm:space-y-3">
-            {navigationLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                className={`block ${
-                  link.active 
-                    ? 'text-button font-medium' 
-                    : 'text-[#24342E] hover:text-button'
-                }`}
-              >
-                {link.title}
-              </a>
-            ))}
-          </div>
-
-          {/* Secondary Navigation */}
-          <div className="space-y-2 sm:space-y-3">
-            {secondaryLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                className="block text-[#24342E] hover:text-button"
-              >
-                {link.title}
-              </a>
-            ))}
-          </div>
-
-          {/* Legal Links */}
-          <div className="space-y-2 sm:space-y-3">
-            {legalLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                className="block text-[#24342E] hover:text-button"
-              >
-                {link.title}
-              </a>
-            ))}
+        {/* 🔹 Bottom Section */}
+        <div>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm sm:text-base">
+            <div style={{ color: `${darkInk}B3` }}>
+              Copyright 2025 Gulf. All rights reserved.
+            </div>
+           
           </div>
         </div>
 
-        {/* Social Media + Copyright */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-sm sm:text-base">
-          <div className="text-[#24342E]/70">
-            © 2025 . All rights reserved.
-          </div>
-          
-          {/* Social Icons */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            {[
-              { icon: Facebook, href: '#' },
-              { icon: Instagram, href: '#' },
-              { icon: Linkedin, href: '#' },
-              { icon: Twitter, href: '#' }
-            ].map((social, index) => (
-              <a
-                key={index}
-                href={social.href}
-                className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[#F2F0E9] rounded-lg flex items-center justify-center text-[#24342E] hover:text-button transition-all duration-300"
-              >
-                <social.icon size={20} className="sm:size-22 md:size-24" />
-              </a>
-            ))}
-          </div>
-        </div>
       </div>
     </footer>
   );

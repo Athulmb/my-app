@@ -5,8 +5,8 @@ const OurMission = () => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <section className="bg-background text-white py-16 px-6 md:px-12 lg:px-20">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-background h-screen text-white py-16 px-6 md:px-12 lg:px-20">
+      <div className="max-w-5xl mx-auto">
         {/* Text with entry animation */}
         <motion.div
           className="flex flex-col mb-6"
@@ -14,24 +14,20 @@ const OurMission = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
         >
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4">
-            Lorem Ipsum
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-4 text-[38px]">
+            Our Mission
           </h2>
-          <p className="text-[#eaeaea] mb-4 max-w-5xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            vitae eros eget tellus tristique bibendum. Donec rutrum sed sem quis
-            venenatis. Proin viverra risus a eros volutpat tempor.
+          <p className="text-[#eaeaea] mt-4 font-normal mb-4 text-[22px] max-w-5xl">
+            We are dedicated to shaping spaces that spark imagination and foster connection. Every design balances creativity with purpose, ensuring architecture that not only serves but also inspires.
           </p>
-          <p className="text-[#eaeaea] max-w-5xl">
-            Curabitur vel sem at velit placerat egestas. Suspendisse potenti.
-            Integer pulvinar leo id viverra feugiat. Pellentesque libero justo,
-            semper at tempus vel, ultrices in ligula.
+          <p className="text-[#eaeaea] font-normal text-[22px] max-w-6xl">
+            Through innovation, sustainability, and timeless craftsmanship, we strive to build environments that enrich lives, uplift communities, and create a lasting legacy.
           </p>
         </motion.div>
 
         {/* Image with hover effect and animation */}
         <motion.div
-          className="w-full rounded-xl overflow-hidden shadow-lg mb-6 cursor-pointer"
+          className="w-full rounded-xl mt-12 overflow-hidden shadow-lg mb-6 cursor-pointer"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
@@ -42,11 +38,11 @@ const OurMission = () => {
           <img
             src={
               hovered
-                ? "https://picsum.photos/1200/800?random=2"
-                : "https://picsum.photos/1200/800?random=1"
+                ? "https://oilreviewmiddleeast.com/images/Refinery_-_AdobeStock_497491056_for_new_website.jpg"
+                : "view-futuristic-engineering-park.jpg"
             }
             alt="Lorem ipsum"
-            className="w-full h-80 md:h-96 lg:h-[500px] object-cover transition-all duration-500"
+            className="w-full h-[550px] object-cover transition-all duration-500"
           />
         </motion.div>
       </div>

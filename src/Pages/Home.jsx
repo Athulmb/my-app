@@ -10,9 +10,9 @@ const Home = () => {
   return (
     <div>
       <Hero />
+      <ScorlAnimtionCards />
       <Service />
       <AboutSection />
-      <ScorlAnimtionCards />
       <Review />
       <FaqSection />
     </div>

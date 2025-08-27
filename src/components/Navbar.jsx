@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 // ✅ Navbar Data
 const navbarData = {
   logo: {
-    src: "/logo.png",
+    home: "/logo.png",
+    default: "/logo1.png",
     alt: "Gulf Logo",
-    subtitle: "Training and Manufacturing Group",
   },
   links: [
     { label: "Home", href: "/" },
@@ -19,8 +19,8 @@ const navbarData = {
         { label: "Project 3", href: "#" },
       ],
     },
-    { label: "Blog", href: "/blog" },
-    { label: "Service", href: "/service" },
+    { label: "Blog", href: "#" },
+    { label: "Service", href: "#" },
     { label: "About", href: "/about" },
   ],
   cta: {
@@ -36,10 +36,11 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const getstart = () => {
     navigate(navbarData.cta.href);
-  }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,6 +58,12 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // ✅ Pick logo based on path
+  const currentLogo =
+    location.pathname === "/"
+      ? navbarData.logo.home
+      : navbarData.logo.default;
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 text-white transition-all duration-500
@@ -64,17 +71,14 @@ const Navbar = () => {
         ${scrolled ? "bg-[#eaeaea] shadow-md" : "bg-transparent"}
       `}
     >
-      <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-20 py-2">
+      <div className="flex items-center justify-between px-4 sm:px-6 md:px-10 lg:px-20 py-1">
         {/* Logo */}
         <div className="flex flex-col items-start">
           <img
-            src={navbarData.logo.src}
+            src={currentLogo}
             alt={navbarData.logo.alt}
-            className="h-16 w-auto sm:h-14 md:h-16 lg:h-32 object-contain"
+            className="h-12 w-auto sm:h-14 md:h-12 lg:h-24 object-contain"
           />
-          <div className="text-sm sm:text-base md:text-sm lg:text-md text-[#636363]">
-            {navbarData.logo.subtitle}
-          </div>
         </div>
 
         {/* Desktop Menu */}
@@ -130,7 +134,12 @@ const Navbar = () => {
 
         {/* Desktop CTA */}
         <div className="hidden md:block">
-          <button onClick={()=>{getstart()}} className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-button">
+          <button
+            onClick={() => {
+              getstart();
+            }}
+            className="relative overflow-hidden px-6 py-2 rounded-md font-medium group bg-button"
+          >
             <span className="absolute bottom-0 left-1/2 w-0 h-0 bg-black rounded-md transform -translate-x-1/2 group-hover:w-full group-hover:h-full transition-all duration-500 ease-in-out"></span>
             <span className="relative z-10 block text-white transition-transform duration-500 group-hover:-translate-y-[180%]">
               {navbarData.cta.label}

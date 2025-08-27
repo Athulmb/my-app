@@ -7,7 +7,7 @@ const reviews = [
     name: "Thomas R.",
     role: "Mining Operations Manager",
     text: "Working with GULF turned our supply chain vision into reality. The team provided efficient sourcing and delivery that enhanced our operations.",
-    img: "https://randomuser.me/api/portraits/men/45.jpg", // stock mining executive photo
+    img: "https://randomuser.me/api/portraits/men/45.jpg",
     rating: 5,
   },
   {
@@ -15,7 +15,7 @@ const reviews = [
     name: "Anonymous",
     role: "Construction Client",
     text: "The attention to detail in fabrication and safety compliance I've never seen. They exceeded our expectations in every way.",
-    img: "https://randomuser.me/api/portraits/men/46.jpg", // stock professional photo
+    img: "https://randomuser.me/api/portraits/men/46.jpg",
     rating: 5,
   },
   {
@@ -23,7 +23,7 @@ const reviews = [
     name: "Michael Brown",
     role: "Energy Specialist",
     text: "GULF's renewable energy solutions integrated perfectly into our industrial setup, reducing costs and improving sustainability.",
-    img: "https://randomuser.me/api/portraits/men/47.jpg", // stock energy specialist photo
+    img: "https://randomuser.me/api/portraits/men/47.jpg",
     rating: 5,
   },
   {
@@ -31,46 +31,54 @@ const reviews = [
     name: "Sarah Ortiz",
     role: "Project Founder",
     text: "From procurement to execution, GULF handled our oil terminal needs with professionalism and expertise.",
-    img: "https://randomuser.me/api/portraits/women/48.jpg", // stock female professional photo
+    img: "https://randomuser.me/api/portraits/women/48.jpg",
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: "Laura K.",
+    role: "Industrial Consultant",
+    text: "GULF delivered timely solutions with top-notch quality. Their project management is exceptional.",
+    img: "https://randomuser.me/api/portraits/women/49.jpg",
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: "David P.",
+    role: "Supply Chain Lead",
+    text: "Efficient, professional, and reliable. GULF is our go-to partner for industrial projects.",
+    img: "https://randomuser.me/api/portraits/men/50.jpg",
     rating: 5,
   },
 ];
 
 const ReviewsSection = () => {
   const [index, setIndex] = useState(0);
-  const [isMdOrBelow, setIsMdOrBelow] = useState(false);
 
   // Auto-slide every 5s
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + (isMdOrBelow ? 1 : 2)) % reviews.length);
+      setIndex((prev) => (prev + 3) % reviews.length); // slide next 3 at once
     }, 5000);
     return () => clearInterval(interval);
-  }, [isMdOrBelow]);
-
-  // Detect screen width
-  useEffect(() => {
-    const handleResize = () => setIsMdOrBelow(window.innerWidth < 768); // md breakpoint
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Pick 1 or 2 cards depending on screen size
-  const currentCards = isMdOrBelow
-    ? [reviews[index % reviews.length]]
-    : [reviews[index % reviews.length], reviews[(index + 1) % reviews.length]];
+  // Pick 3 cards at a time
+  const currentCards = [
+    reviews[index % reviews.length],
+    reviews[(index + 1) % reviews.length],
+    reviews[(index + 2) % reviews.length],
+  ];
 
   return (
     <div className="bg-secondary py-20 pl-4 md:pl-16">
       <div className="w-full mx-auto">
         {/* Heading */}
         <h2 className="text-4xl md:text-6xl lg:text-[90px] font-bold text-gray-900 mb-10 leading-tight">
-  Client's Words
-  <span className="hidden md:block">Reviews</span>
-  <span className="md:hidden"> Reviews</span>
-</h2>
-
+          Client's Words
+          <span className="hidden md:block">Reviews</span>
+          <span className="md:hidden"> Reviews</span>
+        </h2>
 
         <div className="flex flex-col md:flex-row gap-8">
           {/* Left Fixed Video Card */}
@@ -89,15 +97,15 @@ const ReviewsSection = () => {
             </div>
           </div>
 
-          {/* Right Auto-Sliding Reviews (2 at once) */}
+          {/* Right Auto-Sliding Reviews (3 at once) */}
           <div className="relative flex-1 flex justify-center items-center overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.div
-                key={index} // changes when index updates
-                initial={{ x: 600 }}       // enter from right
-                animate={{ x: 0 }}         // center position
-                exit={{ x: -600 }}         // leave to left
-                transition={{ duration: 0.6 }}
+                key={index} // changes with every slide
+                initial={{ x: "100%" }} // enter from right
+                animate={{ x: 0 }}     // center
+                exit={{ x: "-100%" }}   // leave left
+                transition={{ duration: 0.8 }}
                 className="flex gap-6 justify-center"
               >
                 {currentCards.map((review) => (
@@ -134,7 +142,6 @@ const ReviewsSection = () => {
               </motion.div>
             </AnimatePresence>
           </div>
-
         </div>
       </div>
     </div>
