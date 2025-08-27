@@ -13,7 +13,6 @@ const Home = () => {
       <ScorlAnimtionCards />
       <Service />
       <AboutSection />
-      <Review />
       <FaqSection />
     </div>
   );

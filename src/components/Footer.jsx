@@ -57,33 +57,8 @@ const Footer = () => {
     <footer className="py-12 sm:py-16" style={{ backgroundColor: bgTint }}>
       <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-24">
 
-        {/* 🔹 Top Section (Logo only) */}
-        <div className="mb-12">
-  <div className="flex items-start">
-    {["G", "U", "L", "F"].map((ch, i) => {
-      const isAccent = ch === "L";
-      return (
-        <span
-          key={i}
-          className={`font-extrabold leading-none inline-block select-none transition-all duration-700 ease-out ${
-            animateLetters
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
-          }`}
-          style={{
-            color: isAccent ? accent : darkInk,
-            fontSize: "clamp(100px, 22vw, 260px)", // ⬆️ Bigger range
-            fontWeight: 900, // ⬆️ Heaviest bold
-            letterSpacing: "-0.02em", // tighten letters
-            transitionDelay: `${i * 120}ms`,
-          }}
-        >
-          {ch}
-        </span>
-      );
-    })}
-  </div>
-</div>
+        
+
 
 
         {/* 🔹 Middle Section */}
@@ -101,9 +76,8 @@ const Footer = () => {
                     <a
                       key={idx}
                       href={link.href}
-                      className={`block ${
-                        link.active ? "font-medium" : "hover:opacity-80"
-                      }`}
+                      className={`block ${link.active ? "font-medium" : "hover:opacity-80"
+                        }`}
                       style={{ color: link.active ? accent : darkInk }}
                     >
                       {link.title}
@@ -166,7 +140,7 @@ const Footer = () => {
             <div style={{ color: `${darkInk}B3` }}>
               Copyright 2025 Gulf. All rights reserved.
             </div>
-           
+
           </div>
         </div>
 
