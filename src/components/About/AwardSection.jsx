@@ -54,7 +54,7 @@ const AwardsSection = () => {
           viewport={{ once: true }}
         >
           <motion.h2
-            className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight inline-block"
+                          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold leading-tight inline-block"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -75,10 +75,26 @@ const AwardsSection = () => {
                   visible: { opacity: 1, y: 0 },
                 }}
                 transition={{ duration: 0.4 }}
+                className="md:inline hidden"
               >
                 {char === " " ? "\u00A0" : char}
               </motion.span>
             ))}
+            {/* Mobile version - shorter heading */}
+            <span className="md:hidden inline">
+              {"Built by Us".split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0 },
+                  }}
+                  transition={{ duration: 0.4 }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </motion.span>
+              ))}
+            </span>
             <br />
           </motion.h2>
         </motion.div>
