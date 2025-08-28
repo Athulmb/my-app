@@ -1,151 +1,202 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React from "react";
 
-const reviews = [
+const companies = [
   {
     id: 1,
-    name: "Thomas R.",
-    role: "Mining Operations Manager",
-    text: "Working with GULF turned our supply chain vision into reality. The team provided efficient sourcing and delivery that enhanced our operations.",
-    img: "https://randomuser.me/api/portraits/men/45.jpg",
-    rating: 5,
+    name: "Vega Global",
+    img: "company7.png",
   },
   {
     id: 2,
-    name: "Anonymous",
-    role: "Construction Client",
-    text: "The attention to detail in fabrication and safety compliance I've never seen. They exceeded our expectations in every way.",
-    img: "https://randomuser.me/api/portraits/men/46.jpg",
-    rating: 5,
+    name: "Nexa Global Supply",
+    img: "company1.png",
   },
   {
     id: 3,
-    name: "Michael Brown",
-    role: "Energy Specialist",
-    text: "GULF's renewable energy solutions integrated perfectly into our industrial setup, reducing costs and improving sustainability.",
-    img: "https://randomuser.me/api/portraits/men/47.jpg",
-    rating: 5,
+    name: "Nova Global",
+    img: "company5.png",
   },
   {
     id: 4,
-    name: "Sarah Ortiz",
-    role: "Project Founder",
-    text: "From procurement to execution, GULF handled our oil terminal needs with professionalism and expertise.",
-    img: "https://randomuser.me/api/portraits/women/48.jpg",
-    rating: 5,
+    name: "Xingchen Maoyi",
+    img: "company4.png",
   },
   {
     id: 5,
-    name: "Laura K.",
-    role: "Industrial Consultant",
-    text: "GULF delivered timely solutions with top-notch quality. Their project management is exceptional.",
-    img: "https://randomuser.me/api/portraits/women/49.jpg",
-    rating: 5,
+    name: "Izdihar Limited",
+    img: "company2.png",
   },
   {
     id: 6,
-    name: "David P.",
-    role: "Supply Chain Lead",
-    text: "Efficient, professional, and reliable. GULF is our go-to partner for industrial projects.",
-    img: "https://randomuser.me/api/portraits/men/50.jpg",
-    rating: 5,
+    name: "Commenda Limited",
+    img: "company3.png",
+  },
+  {
+    id: 7,
+    name: "Opulentia Orbis Limited",
+    img: "company9.png",
+  },
+  {
+    id: 8,
+    name: "Orbitscape",
+    img: "company6.png",
+  },
+  {
+    id: 9,
+    name: "Starpath Commerce",
+    img: "company8.png",
   },
 ];
 
-const ReviewsSection = () => {
-  const [index, setIndex] = useState(0);
-
-  // Auto-slide every 5s
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 3) % reviews.length); // slide next 3 at once
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Pick 3 cards at a time
-  const currentCards = [
-    reviews[index % reviews.length],
-    reviews[(index + 1) % reviews.length],
-    reviews[(index + 2) % reviews.length],
-  ];
-
+const LogoSliderSection = () => {
   return (
-    <div className="bg-secondary py-20 pl-4 md:pl-16">
-      <div className="w-full mx-auto">
-        {/* Heading */}
-        <h2 className="text-4xl md:text-6xl lg:text-[90px] font-bold text-gray-900 mb-10 leading-tight">
-          Client's Words
-          <span className="hidden md:block">Reviews</span>
-          <span className="md:hidden"> Reviews</span>
-        </h2>
-
-        <div className="flex flex-col md:flex-row gap-8">
-          {/* Left Fixed Video Card */}
-          <div className="w-full md:w-[418px] h-[300px] md:h-[560px] flex-shrink-0 rounded-xl overflow-hidden relative">
-            <video
-              src="https://cdn.prod.website-files.com/6864c5e4479c3c44f5272e57%2F687ecbbee59ca24ab7115391_0_Man_Video_Call_1280x720%20%281%29-transcode.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              className="w-full h-full object-cover"
-            ></video>
-            <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-4 text-white">
-              <h3 className="font-semibold">Inshad Zaman</h3>
-              <p className="text-sm">Architect & Founder</p>
+    <div className="bg-slate-900 py-8 sm:py-12">
+      <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Mobile Layout - Stacked */}
+        <div className="block lg:hidden">
+          <div className="text-center mb-8">
+            <h2 className="text-white text-xl sm:text-2xl font-light leading-relaxed">
+              Our Trading
+              <br />
+              <span className="font-normal">Companies</span>
+            </h2>
+          </div>
+          
+          {/* Mobile Logo Slider */}
+          <div className="relative overflow-hidden">
+            {/* Left blur fade */}
+            <div className="absolute left-0 top-0 w-8 sm:w-12 h-full bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent z-10 pointer-events-none"></div>
+            {/* Right blur fade */}
+            <div className="absolute right-0 top-0 w-8 sm:w-12 h-full bg-gradient-to-l from-slate-900 via-slate-900/80 to-transparent z-10 pointer-events-none"></div>
+            
+            <div className="flex animate-scroll-mobile">
+              {/* Triple the logos for seamless infinite scroll */}
+              {[...companies, ...companies, ...companies].map((company, index) => (
+                <div
+                  key={`mobile-${index}`}
+                  className="flex items-center justify-center h-12 sm:h-16 w-24 sm:w-32 flex-shrink-0 mx-3 sm:mx-5
+                           hover:scale-110 transition-transform duration-300 cursor-pointer"
+                >
+                  <img
+                    src={company.img}
+                    alt={company.name}
+                    className="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70
+                             hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+              ))}
             </div>
           </div>
+        </div>
 
-          {/* Right Auto-Sliding Reviews (3 at once) */}
-          <div className="relative flex-1 flex justify-center items-center overflow-hidden">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={index} // changes with every slide
-                initial={{ x: "100%" }} // enter from right
-                animate={{ x: 0 }}     // center
-                exit={{ x: "-100%" }}   // leave left
-                transition={{ duration: 0.8 }}
-                className="flex gap-6 justify-center"
-              >
-                {currentCards.map((review) => (
-                  <div
-                    key={review.id}
-                    className="bg-white p-6 rounded-xl shadow flex flex-col h-[300px] md:h-[560px] w-[280px] md:w-[418px] max-w-[418px]"
-                  >
-                    {/* Stars */}
-                    <div className="flex text-yellow-500 mb-4">
-                      {"★".repeat(5)}
-                    </div>
-                    {/* Text */}
-                    <p className="text-gray-700 mb-6 text-sm md:text-base">
-                      {review.text}
-                    </p>
-                    {/* User */}
-                    <div className="flex items-center mt-auto gap-4">
-                      <img
-                        src={review.img}
-                        alt={review.name}
-                        className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover"
-                      />
-                      <div>
-                        <h4 className="font-semibold text-gray-900 text-sm md:text-base">
-                          {review.name}
-                        </h4>
-                        <p className="text-xs md:text-sm text-gray-500">
-                          {review.role}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
+        {/* Desktop Layout - Side by Side */}
+        <div className="hidden lg:flex items-center">
+          {/* Left Section - Text */}
+          <div className="flex-shrink-0 w-64 xl:w-80 pr-8">
+            <h2 className="text-white text-2xl xl:text-3xl font-light leading-relaxed">
+              Our Trading
+              <br />
+              <span className="font-normal">Companies</span>
+            </h2>
+          </div>
+
+          {/* Right Section - Moving Logos */}
+          <div className="flex-1 overflow-hidden relative">
+            {/* Left blur fade */}
+            <div className="absolute left-0 top-0 w-16 xl:w-20 h-full bg-gradient-to-r from-slate-900 via-slate-900/90 via-slate-900/70 to-transparent z-10 pointer-events-none"></div>
+            {/* Right blur fade */}
+            <div className="absolute right-0 top-0 w-16 xl:w-20 h-full bg-gradient-to-l from-slate-900 via-slate-900/90 via-slate-900/70 to-transparent z-10 pointer-events-none"></div>
+            
+            <div className="flex animate-scroll-desktop">
+              {/* Triple the logos for seamless infinite scroll */}
+              {[...companies, ...companies, ...companies].map((company, index) => (
+                <div
+                  key={`desktop-${index}`}
+                  className="flex items-center justify-center h-16 xl:h-20 w-36 xl:w-44 flex-shrink-0 mx-5 xl:mx-8
+                           hover:scale-110 transition-transform duration-300 cursor-pointer"
+                >
+                  <img
+                    src={company.img}
+                    alt={company.name}
+                    className="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70
+                             hover:opacity-100 transition-opacity duration-300"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
+      {/* CSS Animations */}
+      <style dangerouslySetInnerHTML={{
+        __html: `
+          @keyframes scroll-mobile {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(calc(-${(24 + 2 * 3) * 4 * companies.length / 3}px));
+            }
+          }
+          
+          @keyframes scroll-desktop {
+            0% {
+              transform: translateX(0);
+            }
+            100% {
+              transform: translateX(calc(-${(36 + 2 * 5) * 4 * companies.length / 3}px));
+            }
+          }
+          
+          .animate-scroll-mobile {
+            animation: scroll-mobile 20s linear infinite;
+            width: max-content;
+          }
+          
+          .animate-scroll-desktop {
+            animation: scroll-desktop 25s linear infinite;
+            width: max-content;
+          }
+          
+          .animate-scroll-mobile:hover,
+          .animate-scroll-desktop:hover {
+            animation-play-state: paused;
+          }
+          
+          @media (min-width: 640px) {
+            @keyframes scroll-mobile {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(calc(-${(32 + 2 * 5) * 4 * companies.length / 3}px));
+              }
+            }
+          }
+          
+          @media (min-width: 1280px) {
+            @keyframes scroll-desktop {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(calc(-${(44 + 2 * 8) * 4 * companies.length / 3}px));
+              }
+            }
+          }
+
+          /* Ensure smooth performance */
+          .animate-scroll-mobile,
+          .animate-scroll-desktop {
+            will-change: transform;
+            backface-visibility: hidden;
+            perspective: 1000px;
+          }
+        `
+      }} />
     </div>
   );
 };
 
-export default ReviewsSection;
+export default LogoSliderSection;

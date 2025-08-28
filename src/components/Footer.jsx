@@ -51,7 +51,7 @@ const Footer = () => {
   const bgTint = "#F6F4EC";
   const tileTint = "#F2F0E9";
   const darkInk = "#24342E";
-  const accent = "#FF4D1A";
+  const accent = "#961c1f";
 
   return (
     <footer className="py-12 sm:py-16" style={{ backgroundColor: bgTint }}>
@@ -84,7 +84,6 @@ const Footer = () => {
                     </a>
                   ))}
                 </div>
-                {/* Secondary */}
                 <div className="space-y-2 sm:space-y-3">
                   {secondaryLinks.map((link, idx) => (
                     <a
@@ -124,8 +123,17 @@ const Footer = () => {
                 <a
                   key={item.key}
                   href={item.href}
-                  className="rounded-xl flex items-center justify-center h-full py-6"
-                  style={{ backgroundColor: tileTint, color: darkInk }}
+                  className="rounded-xl flex items-center justify-center h-full py-6 transition-colors duration-300"
+                  style={{ 
+                    backgroundColor: tileTint, 
+                    color: darkInk 
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = accent;
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.color = darkInk;
+                  }}
                 >
                   {item.node}
                 </a>

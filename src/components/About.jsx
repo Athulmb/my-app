@@ -7,11 +7,11 @@ const AnimatedHeading = ({ text }) => {
 
   return (
     <h1
-      className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 tracking-tight mb-4 sm:mb-6"
+      className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-gray-900 tracking-tight mb-3 sm:mb-4 md:mb-6"
       aria-label={text}
     >
       {words.map((chars, wi) => (
-        <span key={wi} className="inline-block mr-2">
+        <span key={wi} className="inline-block mr-1 sm:mr-2">
           {chars.map((char, ci) => (
             <motion.span
               key={ci}
@@ -67,18 +67,22 @@ const StatItem = ({ number, suffix = "+", title, description, delay }) => {
       initial="hidden"
       animate={controls}
       variants={textVariants}
-      className="py-10 border-b border-gray-600 last:border-b-0 
-                 grid grid-cols-[30%_70%] items-start gap-6"
+      className="py-6 sm:py-8 md:py-10 border-b border-gray-600 last:border-b-0 
+                 grid grid-cols-[35%_65%] xs:grid-cols-[30%_70%] items-start gap-3 sm:gap-4 md:gap-6"
     >
       {/* 🔢 Left Number */}
-      <h2 className="text-6xl md:text-7xl font-extrabold text-white">
+      <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-none">
         {count}{suffix}
       </h2>
 
       {/* 📖 Right Content */}
       <div>
-        <p className="text-lg md:text-xl font-semibold text-white">{title}</p>
-        <p className="mt-2 text-base md:text-lg text-gray-300">{description}</p>
+        <p className="text-sm sm:text-base md:text-lg lg:text-xl font-semibold text-white leading-tight">
+          {title}
+        </p>
+        <p className="mt-1 sm:mt-2 text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 leading-relaxed">
+          {description}
+        </p>
       </div>
     </motion.div>
   );
@@ -87,7 +91,10 @@ const StatItem = ({ number, suffix = "+", title, description, delay }) => {
 // ✅ Stats Card (animated items)
 const StatsCard = () => (
   <div className="bg-[#0F1E17] text-white rounded-lg 
-                  px-12 py-10 space-y-8 w-full h-full flex flex-col justify-center">
+                  px-4 sm:px-6 md:px-8 lg:px-12 
+                  py-6 sm:py-8 md:py-10 
+                  space-y-4 sm:space-y-6 md:space-y-8 
+                  w-full h-full flex flex-col justify-center">
     <StatItem
       number={320}
       title="Employees"
@@ -123,39 +130,38 @@ const AboutSection = () => {
   const y = useTransform(scrollYProgress, [0, 0.5], ["0%", "-20%"]);
 
   return (
-    <section ref={ref} className="py-20 bg-secondary">
+    <section ref={ref} className="py-12 sm:py-16 md:py-20 bg-secondary">
       <div
         className="
           max-w-full mx-auto 
-          grid grid-cols-1 md:grid-cols-[1fr,1fr] 
-          gap-12 md:gap-16 lg:gap-24
-          px-6 md:px-12 lg:px-20
+          grid grid-cols-1 lg:grid-cols-[1fr,1fr] 
+          gap-8 sm:gap-10 md:gap-12 lg:gap-16 xl:gap-24
+          px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20
         "
       >
         {/* ✅ Left Sticky Column */}
         <motion.div
-  style={{ y }}
-  className="flex flex-col justify-center md:sticky md:top-32 h-fit"
->
-  <AnimatedHeading text="From humble beginnings in 2016, we have continuously expanded our operations, creating lasting impact in the industries we serve." />
-  
-  <motion.p
-    className="text-gray-700 text-sm sm:text-base md:text-base leading-relaxed max-w-3xl"
-    initial={{ y: 20, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6, delay: 0.5 }}
-  >
-    <strong>2016:</strong> Commenced trading activities, establishing the foundation of our vision.<br />
-    <strong>2018:</strong> Launched the Atlas Factory, our first production facility, driving innovation.<br />
-    <strong>2020:</strong> Introduced Workforce Living Solutions, supporting our employees’ growth and wellbeing.
-  </motion.p>
-</motion.div>
-
+          style={{ y }}
+          className="flex flex-col justify-center lg:sticky lg:top-20 xl:top-32 h-fit order-2 lg:order-1"
+        >
+          <AnimatedHeading text="From humble beginnings in 2016, we have continuously expanded our operations, creating lasting impact in the industries we serve." />
+          
+          <motion.p
+            className="text-gray-700 text-xs sm:text-sm md:text-base leading-relaxed max-w-3xl"
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <strong>2016:</strong> Commenced trading activities, establishing the foundation of our vision.<br />
+            <strong>2018:</strong> Launched the Atlas Factory, our first production facility, driving innovation.<br />
+            <strong>2020:</strong> Introduced Workforce Living Solutions, supporting our employees' growth and wellbeing.
+          </motion.p>
+        </motion.div>
 
         {/* ✅ Right Scrollable Stats */}
-        <div className="flex items-center justify-center h-full">
-          <div className="w-full h-[80vh]">
+        <div className="flex items-center justify-center h-full order-1 lg:order-2">
+          <div className="w-full h-[60vh] sm:h-[70vh] md:h-[75vh] lg:h-[80vh]">
             <StatsCard />
           </div>
         </div>
@@ -164,4 +170,4 @@ const AboutSection = () => {
   );
 };
 
-export default AboutSection;
+export default AboutSection; 

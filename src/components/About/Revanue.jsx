@@ -1,121 +1,224 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { FaExchangeAlt, FaIndustry, FaBuilding } from "react-icons/fa";
-import { Users } from "lucide-react";
-import { ResponsiveContainer } from "recharts";
-import { PieChart, Pie, Cell } from "recharts";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+} from "recharts";
+import { motion, useInView } from "framer-motion";
+import { FaIndustry, FaUsers, FaHome } from "react-icons/fa";
 
-const revenueData = [
-  { name: "Liberia", value: 2.7, color: "#60a5fa" },
-  { name: "Turkey", value: 20.6, color: "#3b82f6" },
-  { name: "UAE", value: 11.2, color: "#1e3a8a" },
-  { name: "KSA", value: 65.4, color: "#2563eb" },
+// Donut Chart Data
+const pieData = [
+  { name: "KSA", value: 65.4 },
+  { name: "Others", value: 34.6 },
+  { name: "UAE", value: 20.6 },
+  { name: "Turkey", value: 11.2 },
+  { name: "Liberia", value: 2.7 },
 ];
 
-const timelineData = [
-  {
-    year: "2016",
-    title: "Trading Activities Start",
-    description: "Transition to trade activities took place",
-    icon: (
-      <FaExchangeAlt className="text-5xl md:text-6xl text-button hover:text-black transition-colors duration-300" />
-    ),
-  },
-  {
-    year: "2018",
-    title: "Atlas Factory Establishment",
-    description: "First production facility was established",
-    icon: (
-      <FaIndustry className="text-5xl md:text-6xl text-button hover:text-black transition-colors duration-300" />
-    ),
-  },
-  {
-    year: "2020",
-    title: "Workforce Living Solutions Operation",
-    description: "Workforce living quarters operation was launched",
-    icon: (
-      <FaBuilding className="text-5xl md:text-6xl text-button hover:text-black transition-colors duration-300" />
-    ),
-  },
+// Bar Chart Data
+const barData = [
+  { freq: "0", employees: 5 },
+  { freq: "1", employees: 12 },
+  { freq: "2", employees: 18 },
+  { freq: "3", employees: 10 },
+  { freq: "4", employees: 7 },
 ];
 
-const Timeline = () => {
+const COLORS = ["#d32f2f", "#f7b6b6", "#f28e2b", "#4e79a7", "#76b7b2"];
+
+// Custom label for Pie chart
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  index,
+}) => {
+  const RADIAN = Math.PI / 180;
+  const radius = outerRadius + 20;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
+
   return (
-    <section className="w-full min-h-screen bg-[#F7F6EC] py-12 md:py-16 px-4 sm:px-6 md:px-20">
-      {/* Heading */}
+    <text
+      x={x}
+      y={y}
+      fill="#333"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+      fontSize={10}
+    >
+      {`${pieData[index].name}: ${pieData[index].value}%`}
+    </text>
+  );
+};
+
+// Animation Variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
+  visible: (i) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { delay: i * 0.2, duration: 0.6, type: "spring" },
+  }),
+};
+
+export default function KeyHistorical() {
+  const chartRef = useRef(null);
+  const isInView = useInView(chartRef, { once: false, amount: 0.4 });
+
+  const [chartData, setChartData] = useState([]);
+  const [animateKey, setAnimateKey] = useState(0); // 👈 forces Pie re-render
+
+  useEffect(() => {
+    if (isInView) {
+      // Reset chart animation each time section is visible
+      setChartData([]);
+      const timer = setTimeout(() => {
+        setChartData(pieData);
+        setAnimateKey((prev) => prev + 1); // change key → restart animation
+      }, 300);
+      return () => clearTimeout(timer);
+    }
+  }, [isInView]);
+
+  return (
+    <div className="bg-[#f7f5ed] min-h-screen px-4 sm:px-6 md:px-24 py-12 font-sans">
+      {/* Header */}
       <motion.div
-        className="text-center mb-12 md:mb-16"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, type: "spring" }}
+        className="max-w-full mx-auto pb-28"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-black">Key Historical</h2>
-        <p className="text-gray-400 text-lg md:text-xl font-light">Highlights</p>
-        <div className="flex items-center justify-center">
-          <div className="w-20 md:w-28 h-0.5 mt-2 bg-button"></div>
+        <h4 className="text-red-600 font-semibold">Highlights</h4>
+        <div className="flex flex-col md:flex-row justify-between items-start gap-4">
+          <h2 className="text-6xl sm:text-5xl font-bold">Key Historical</h2>
+          <p className="text-gray-600 max-w-md text-sm sm:text-base">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry&apos;s
+          </p>
+        </div>
+        <div className="border-b border-gray-300 mt-4"></div>
+      </motion.div>
+
+      {/* Timeline Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="max-w-full mx-auto mb-24  bg-[#FDFCF0]/40 backdrop-blur-lg border-2 border-white p-6 rounded-xl mt-8"
+      >
+        <div className="grid grid-cols-1  sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {[
+            {
+              year: "2016",
+              icon: <FaIndustry size={28} />,
+              title: "Trading Activities Start",
+            },
+            {
+              year: "2018",
+              icon: <FaHome size={28} />,
+              title: "Atlas Factory Establishment",
+            },
+            {
+              year: "2020",
+              icon: <FaUsers size={28} />,
+              title: "Workforce Living Solutions Operation",
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              variants={fadeUp}
+              custom={i}
+              whileHover={{ y: -8, scale: 1.05 }}
+              className="p-6 text-center "
+            >
+              <div className="flex justify-center rounded-full p-2 text-red-600">
+                <div className="bg-white rounded-lg shadow-lg p-2">
+                  {item.icon}
+                </div>
+              </div>
+              <p className="text-sm font-semibold text-gray-500 mt-2">
+                {item.year}
+              </p>
+              <h4 className="font-semibold text-base sm:text-lg mt-1">
+                {item.title}
+              </h4>
+              <p className="text-xs text-gray-500 mt-1">
+                Transition to trade activities took place
+              </p>
+            </motion.div>
+          ))}
         </div>
       </motion.div>
 
-      {/* Timeline */}
-      <div className="grid grid-cols-1 md:grid-cols-3 px-4 md:px-16 mb-10 gap-8 md:gap-12">
-        {timelineData.map((item, index) => (
-          <motion.div
-            key={index}
-            className="flex flex-col items-center text-center"
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="mb-4">{item.icon}</div>
-            <h3 className="text-lg md:text-xl font-semibold text-gray-500">{item.year}</h3>
-            <p className="text-base md:text-lg font-bold text-black mt-1">{item.title}</p>
-            <p className="text-gray-400 text-sm mt-2 max-w-xs">{item.description}</p>
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Map, Pie, Employees Section */}
-      <div className="grid mt-12 md:mt-16 grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
-        {/* Map Section */}
+      {/* Info Cards */}
+      <div className="max-w-full py-24 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+        {/* Group Operations */}
         <motion.div
-          className="bg-[#FDFCF0] shadow-lg rounded-2xl p-4 sm:p-6 flex flex-col justify-between"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          custom={0}
+          className="bg-white rounded-xl shadow-sm border border-gray-100 p-6"
         >
-          <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4">Group Operations</h3>
-          <p className="text-sm text-gray-500 mb-4 md:mb-6">by Geography</p>
+          <h3 className="font-semibold text-lg">Group Operations</h3>
+          <p className="text-sm text-gray-500">by Geography</p>
+          <p className="text-xs text-gray-500 mt-2">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
+          </p>
           <img
-            src="https://gisgeography.com/wp-content/uploads/2022/04/High-Resolution-World-Map.jpg"
-            alt="Group Operations Map"
-            className="w-full h-48 sm:h-60 object-contain rounded-lg"
+            src="/Rectangle 22658.png"
+            alt="map"
+            className="rounded-xl mt-4 w-full h-auto"
           />
         </motion.div>
 
-        {/* Pie Chart Section */}
+        {/* 2024 Group Revenue - Donut Chart */}
         <motion.div
-          className="bg-[#FDFCF0] shadow-lg rounded-2xl p-4 sm:p-6 flex flex-col justify-between"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          ref={chartRef}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          custom={1}
+          className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col"
         >
-          <h3 className="text-lg md:text-xl font-semibold text-gray-800 mb-2 md:mb-4">2024 Group Revenue</h3>
-          <p className="text-sm text-gray-500 mb-4 md:mb-6">by Geography</p>
-          <div className="h-56 sm:h-64">
-            <ResponsiveContainer>
-              <PieChart>
+          <h3 className="font-semibold text-lg">2024 Group Revenue</h3>
+          <p className="text-sm text-gray-500">by Geography</p>
+          <p className="text-xs text-gray-500 mt-2">
+            Lorem Ipsum is simply dummy text of the printing industry.
+          </p>
+          <div className="flex-1 flex items-center justify-center mt-4">
+            <ResponsiveContainer width="100%" height={250}>
+              <PieChart key={animateKey}>
                 <Pie
-                  data={revenueData}
+                  data={chartData}
                   dataKey="value"
-                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={50}
                   outerRadius={80}
-                  label={({ name, value }) => `${name}: ${value}%`}
+                  labelLine={false}
+                  label={renderCustomizedLabel}
+                  isAnimationActive={true}
+                  animationDuration={2000} // 👈 smooth filling
                 >
-                  {revenueData.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  {chartData.map((entry, i) => (
+                    <Cell key={i} fill={COLORS[i % COLORS.length]} />
                   ))}
                 </Pie>
               </PieChart>
@@ -123,24 +226,32 @@ const Timeline = () => {
           </div>
         </motion.div>
 
-        {/* Employees Section */}
+        {/* Employee Number - Bar Chart */}
         <motion.div
-          className="bg-[#FDFCF0] shadow-lg rounded-2xl p-4 sm:p-6 flex flex-col justify-center items-center"
-          initial={{ scale: 0.8, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          custom={2}
+          className="bg-white rounded-xl shadow-sm border border-gray-100 p-6 flex flex-col"
         >
-          <Users className="w-12 h-12 md:w-16 md:h-16 text-button hover:text-black transition-colors duration-300 mb-4" />
-          <h3 className="text-2xl md:text-4xl font-bold text-black hover:text-button transition-colors duration-300">
-            320+
-          </h3>
-          <p className="text-xs md:text-sm text-gray-500 mt-2 text-center">
-            Total Group Employee Number
+          <h3 className="font-semibold text-lg">320+</h3>
+          <p className="text-sm text-gray-500">Total Group Employee Number</p>
+          <p className="text-xs text-gray-500 mt-2">
+            Lorem Ipsum is simply dummy text of the printing industry.
           </p>
+          <div className="flex-1 flex items-center justify-center mt-4">
+            <ResponsiveContainer width="100%" height={200}>
+              <BarChart data={barData}>
+                <XAxis dataKey="freq" fontSize={10} />
+                <YAxis fontSize={10} />
+                <Tooltip />
+                <Bar dataKey="employees" fill="#d32f2f" radius={[6, 6, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </motion.div>
       </div>
-    </section>
+    </div>
   );
-};
-
-export default Timeline;
+}
