@@ -29,7 +29,7 @@ const awards = [
     title: "Residential Apartments",
     year: "2020",
     description:
-      "We specialize in building modern, sustainable, and affordable residential complexes that meet today’s lifestyle needs.",
+      "We specialize in building modern, sustainable, and affordable residential complexes that meet today's lifestyle needs.",
     image: "Project1.png",
   },
 ];
@@ -38,7 +38,7 @@ const AwardsSection = () => {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <section className="bg-background  min-h-screen text-white py-20 px-6 md:px-20 relative overflow-hidden">
+    <section className="bg-background min-h-screen text-white py-20 px-6 md:px-20 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent"></div>
@@ -100,17 +100,17 @@ const AwardsSection = () => {
               <AnimatePresence>
                 {hovered === index && (
                   <motion.div
-                  className="absolute top-[-19px] left-1/2 transform -translate-x-1/2 pointer-events-none z-30"
-                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.8, y: 20 }}
+                    className="absolute inset-0 flex items-center justify-center pointer-events-none z-30"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                   >
                     <div className="relative">
                       <img
                         src={award.image}
                         alt={award.title}
-                        className="w-64 h-64 object-cover rounded-xl shadow-lg"
+                        className="w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 object-cover rounded-xl shadow-lg"
                       />
                       {/* Glow effect */}
                       <div className="absolute inset-0 bg-white/10 blur-xl scale-110 rounded-xl"></div>

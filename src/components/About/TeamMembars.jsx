@@ -5,7 +5,7 @@ import { Facebook, Instagram, Linkedin } from "lucide-react";
 const teamMembers = [
   {
     name: "Ethan Walker",
-    role: "lorim ipsum",
+    role: "Principal Architect & Founder",
     image:
       "https://cdn.prod.website-files.com/6864c5e4479c3c44f5272e57/687f39de2e92457e2f8a7e19_Rectangle%2029.jpg",
   },
@@ -17,7 +17,7 @@ const teamMembers = [
   },
   {
     name: "Daniel Carter",
-    role: "lorim ipsum",
+    role: "Principal Architect & Founder",
     image:
       "https://cdn.prod.website-files.com/6864c5e4479c3c44f5272e57/6871f5894c28fd34774e12b9_Team%20Member%20(3).jpg",
   },
@@ -46,10 +46,10 @@ const fadeUp = {
 
 const TeamSection = () => {
   return (
-    <section className="bg-[#F7F6EC] py-16 px-6 sm:px-12 md:px-16 lg:px-24">
+    <section className="bg-[#F7F6EC] py-12 px-4 sm:px-12 md:px-16 lg:px-24">
       <div className="max-w-full mx-auto">
         {/* Top Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start mb-16">
           {/* Left Side Content */}
           <motion.div
             initial="hidden"
@@ -58,13 +58,12 @@ const TeamSection = () => {
             variants={fadeUp}
             className="flex flex-col justify-start text-center lg:text-left"
           >
-            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-gray-900 mb-8 leading-tight">
-            Our Passionate Creative Team
+            <h2 className="text-2xl sm:text-4xl md:text-6xl lg:text-8xl font-bold text-gray-900 mb-6 leading-tight">
+              Our Passionate Creative Team
             </h2>
-            <button className="bg-button  text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:bg-black transition-colors duration-300 w-fit mx-auto lg:mx-0">
+            <button className="bg-button text-white font-semibold px-4 sm:px-8 py-2 sm:py-4 rounded-lg hover:bg-black transition-colors duration-300 w-fit mx-auto lg:mx-0 text-sm sm:text-base">
               Contact Us
             </button>
-  
           </motion.div>
 
           {/* Right Side - First Two Team Members */}
@@ -79,32 +78,32 @@ const TeamSection = () => {
                 key={i}
                 custom={i}
                 variants={fadeUp}
-                className="bg-[#FDFCF0] h-[450px] sm:h-[500px] lg:h-[550px] rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="bg-[#FDFCF0] h-[420px] sm:h-[500px] lg:h-[550px] rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300 w-full"
               >
-                <div className="mb-4">
+                <div className="mb-3">
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="rounded-2xl border border-white transition-all duration-300 hover:border-button w-full h-68 sm:h-72 lg:h-80 object-cover"
+                    className="rounded-2xl border border-white transition-all duration-300 hover:border-button w-full h-56 sm:h-72 lg:h-80 object-cover"
                   />
                 </div>
 
-                <div className="flex space-x-3 mb-6 mt-6">
-                  <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
-                    <Facebook size={14} />
+                <div className="flex space-x-3 mb-4 mt-4">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
+                    <Facebook size={12} />
                   </div>
-                  <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
-                    <Instagram size={14} />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
+                    <Instagram size={12} />
                   </div>
-                  <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
-                    <Linkedin size={14} />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
+                    <Linkedin size={12} />
                   </div>
                 </div>
 
-                <h3 className="font-bold text-lg sm:text-xl text-gray-900 mt-4 mb-1">
+                <h3 className="font-bold text-base sm:text-xl text-gray-900 mt-2 mb-1">
                   {member.name}
                 </h3>
-                <p className="text-sm text-gray-600 font-medium">
+                <p className="text-xs sm:text-sm text-gray-600 font-medium">
                   {member.role}
                 </p>
               </motion.div>
@@ -114,46 +113,47 @@ const TeamSection = () => {
 
         {/* Bottom Row - Remaining Three Members */}
         <motion.div
-  className="flex flex-col sm:flex-row sm:flex-wrap justify-center lg:justify-end gap-6"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
->
-  {teamMembers.slice(2).map((member, i) => (
-    <motion.div
-      key={i + 2}
-      custom={i}
-      variants={fadeUp}
-      className="bg-[#FDFCF0] h-[450px] sm:h-[500px] lg:h-[550px] rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 w-full sm:w-[calc(50%-12px)] lg:w-[400px]"
-    >
-      <div className="mb-4">
-        <img
-          src={member.image}
-          alt={member.name}
-          className="rounded-2xl w-full h-68 sm:h-72 lg:h-80 object-cover border border-white transition-all duration-300 hover:border-button"
-        />
-      </div>
+          className="flex flex-col sm:flex-row sm:flex-wrap justify-center lg:justify-end gap-6"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          {teamMembers.slice(2).map((member, i) => (
+            <motion.div
+              key={i + 2}
+              custom={i}
+              variants={fadeUp}
+              className="bg-[#FDFCF0] h-[420px] sm:h-[500px] lg:h-[550px] rounded-2xl p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow duration-300 w-full sm:w-[calc(50%-12px)] lg:w-[400px]"
+            >
+              <div className="mb-3">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="rounded-2xl w-full h-56 sm:h-72 lg:h-80 object-cover border border-white transition-all duration-300 hover:border-button"
+                />
+              </div>
 
-      <div className="flex space-x-3 mb-6 mt-6">
-        <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
-          <Facebook size={14} />
-        </div>
-        <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
-          <Instagram size={14} />
-        </div>
-        <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
-          <Linkedin size={14} />
-        </div>
-      </div>
+              <div className="flex space-x-3 mb-4 mt-4">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
+                  <Facebook size={12} />
+                </div>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
+                  <Instagram size={12} />
+                </div>
+                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-button hover:text-white transition-colors duration-300 cursor-pointer">
+                  <Linkedin size={12} />
+                </div>
+              </div>
 
-      <h3 className="font-bold text-lg sm:text-xl text-gray-900 mb-1 mt-4">
-        {member.name}
-      </h3>
-      <p className="text-sm text-gray-600 font-medium">{member.role}</p>
-    </motion.div>
-  ))}
-</motion.div>
-
+              <h3 className="font-bold text-base sm:text-xl text-gray-900 mb-1 mt-2">
+                {member.name}
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-600 font-medium">
+                {member.role}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
